@@ -51,25 +51,35 @@ EOM
 
 ### Add a Qodana runner
 
-1. On TeamCity left navigation panel, select your project and go to **Edit configuration | Build Steps**.
+1. On the left navigation panel, select your project and go to **Edit configuration | Build Steps**.
+2. Select **Add build step**.
+3. Fill in the fields according to this table:
 
-2. Select **Add build step** and for **Runner type**, specify **Qodana**.
+<!-- Additional arguments for 'docker run' - I need to supply the notation for this field. -->
+<!-- Additional parameters for JVM - I need to supply the notation for this field. -->
+<!-- Why to forward reports to TeamCity tests? -->
+<!-- Execute step: what values are available and what they are used for. Needs to be reviewed once more -->
+<!-- Working directory needs to be replaced for the Project directory -->
+<!-- Inspection profile: -->
 
-   In the following steps, specify additional parameters for Qodana's `docker run` command, which you can also see in the [Qodana for JVM Docker Image readme](https://www.jetbrains.com/help/qodana/?qodana-jvm-docker-readme).
+   | Field name | Field value |
+   |--------------|------------|
+   | Runner type | Select **Qodana**.|
+   | Step name | Used to uniquely identify this step. |
+   | Execute step | Condition for triggering this step. |
+   | Working directory | Root directory of your project. Leave empty if the `Checkout directory` parameter is specified on the **Version Control Settings** tab. |
+   | Report ID | Used to identify the report in case several inspection steps are configured for the build.  |
+   | Fail threshold | The maximum number of problems accepted by Qodana without failing a build, specified as an integer value. For more information, see the [Quality gate](quality-gate.xml) section. |
+   | Forward reports to TeamCity Tests | Qodana inspection reports will be forwarded to TeamCity.  |
+   | Enable | Check it to enable Qodana. |
+   | Linter name | See the [Linters](linters.md) section for details. |
+   | Inspection profile | Select the inspection profile. Available values:
+   See the [Configure profile](qodana-yaml.md) section for details. You can disable certain inspections later using the [`qodana.yaml`](https://www.jetbrains.com/help/qodana/qodana-yaml.html#exclude-paths) file or [Profile settings](https://www.jetbrains.com/help/qodana/ui-overview.html#Adjust+your+inspection+profile) in your HTML report. |
+   | Additional parameters for JVM | See the [Qodana Docker images](docker-images.md) section for details. |
+   | Additional arguments for 'docker run' | You can find the list of arguments in the [Qodana for JVM Docker Image readme](https://www.jetbrains.com/help/qodana/?qodana-jvm-docker-readme) section. |
+   | Additional Qodana arguments | See Qodana [configuration options](qodana-jvm-docker-techs.xml#Configuration+options) for details. |
 
 3. Select the checkbox next to **Code Inspections** (stands for the Qodana for JVM linter).
-
-   >You can disable certain inspections later via [`qodana.yaml`](https://www.jetbrains.com/help/qodana/qodana-yaml.html#exclude-paths) or [Profile settings](https://www.jetbrains.com/help/qodana/ui-overview.html#Adjust+your+inspection+profile) in your HTML report.
-
-4. For **Root of the project for the analysis**, specify the path to your project root where its configuration files are located. Leave empty for the **Checkout directory** specified on the **Version Control Settings** tab (system agent working directory).
-
-5. For **Image name:tag**, specify an image name. 
-   
-   **Public image (EAP)** points to the default `jetbrains/qodana:latest`. 
-   
-   **Custom** allows to specify your own value in the field that appears below.
-   
-   Or you can click the question mark sign "**?**" to select an image from the Docker registry with Qodana images.
 
 6. For **Profile**, select 
    - **Default** (`qodana.recommended`). 
