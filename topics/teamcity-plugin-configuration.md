@@ -61,6 +61,11 @@ EOM
 <!-- Execute step: what values are available and what they are used for. Needs to be reviewed once more -->
 <!-- Working directory needs to be replaced for the Project directory -->
 <!-- Inspection profile: -->
+<!-- Report ID - where is this ID available? -->
+<!-- Documentation link for the Inspection profile needs to be improved: https://helpserver.labs.jb.gg/help/qodana/2021.3/qodana-yaml.html#Default+profiles -->
+<!-- Documentation about 'qodana run' parameters needs to be created -->
+<!-- Link to the entry point arguments needs to be improved, currently it doesn't work properly -->
+<!-- Notation for all text fields is required here -->
 
    | Field name | Field value |
    |--------------|------------|
