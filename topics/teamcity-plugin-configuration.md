@@ -48,11 +48,7 @@ EOM
 
 ### Add a Qodana runner
 
-<!-- Documentation link for the Inspection profile needs to be improved: https://helpserver.labs.jb.gg/help/qodana/2021.3/qodana-yaml.html#Default+profiles -->
-<!-- Report ID - where is this ID available? -->
-<!-- Why is it needed to forward reports to TeamCity Tests? -->
 <!-- Documentation about 'qodana run' parameters needs to be created -->
-<!-- Additional arguments for 'docker run' - I need to supply the notation for this field. -->
 <!-- Link to the entry point arguments needs to be improved, currently it doesn't work properly -->
 
 
@@ -71,7 +67,7 @@ Assuming that you have already created your [project](https://www.jetbrains.com/
    <img src="teamcity-plugin-3.png" alt="Creating a new build step" width="706" border-effect="line"/>
 
 4. Using the **Runner type** list, select **Qodana** as a runner. On the **New Build Step** page, you can configure the `Qodana` runner
-using basic options. Otherwise, click **Show advanced options** to expose all configuration options.
+using the basic options. Otherwise, click **Show advanced options** to expand the list of configuration options.
    <img src="teamcity-plugin-4.png" alt="Exposing all configuration options of the Qodana runner" width="706" border-effect="line"/>
    
 5. Fill in the fields using this description.
@@ -82,13 +78,11 @@ using basic options. Otherwise, click **Show advanced options** to expose all co
    
    **Working directory** sets the directory for the build process. For more information, see the [TeamCity](https://www.jetbrains.com/help/teamcity/2021.2/build-working-directory.html) documentation. You can leave this field empty if the `Checkout directory` parameter is specified on the **Version Control Settings** tab.
 
-   **Report ID** identifies the report in case several inspection steps are configured for the build.
+   **Report ID** uniquely identifies the report to let you distinguish between multiple reports when several inspection steps are configured within a single build.
 
    **Fail threshold** configures the maximum number of problems accepted by Qodana without failing a build, specified as an integer value. For more information, see the [Quality gate](quality-gate.xml) section.
 
-   The **Forward reports to TeamCity Tests** checkbox configures that all Qodana inspection report will be forwarded to TeamCity.
-
-   The **Enable** checkbox enables the `Qodana` runner. 
+   The **Forward reports to TeamCity Tests** checkbox configures forwarding all Qodana inspection reports to TeamCity Tests for further investigation.
 
    **Linter** configures the Qodana linter. For details, see the [Linters](linters.md) section.
 
@@ -102,11 +96,11 @@ using basic options. Otherwise, click **Show advanced options** to expose all co
 
    You can disable certain inspections later using the [`qodana.yaml`](https://www.jetbrains.com/help/qodana/qodana-yaml.html#exclude-paths) file or [Profile settings](https://www.jetbrains.com/help/qodana/ui-overview.html#Adjust+your+inspection+profile) in your HTML report.
 
-   **Additional arguments for 'docker run'** configures the arguments accepted by a Docker image. For example, they can be the `-d` or `-changes` parameters.
+   **Additional arguments for 'docker run'** configures the arguments accepted by a Docker image. For example, they can be the `-d` or `-changes` parameters. For more information about arguments, see the [](qodana-jvm-docker-techs.xml#qodana-execution-tuneup) section.
 
    **Additional Qodana arguments** lets you extend the default Qodana functionality, see the [Configuration options](qodana-jvm-docker-techs.xml#Configuration+options) for details.
 
-6. Click **Save**. Now you can run Qodana in the build.
+7. Click **Save**. Now you can run Qodana in the build.
 
 
 ## Add more runners to your build
