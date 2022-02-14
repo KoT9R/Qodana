@@ -16,35 +16,51 @@ The main Qodana functionality comes from the 'engine' shaped into the Docker ima
 
 Custom profile configuration for Qodana linters is stored in `qodana.yaml`. When using a CI system, you need to put this file to the working directory manually. Alternatively, you can write a script that will do it for you.
 
-1. On TeamCity left navigation panel, select your project and go to **Edit configuration | Build Steps**.
+1. Navigate to your build configuration.
+   <img src="teamcity-plugin-1.png" alt="Navigating to the build configuration" width="706" border-effect="line"/>
 
-2. Select **Add build step | Command Line**.
+2. On the build configuration page, select **Build Steps** from the **Edit configuration** list.
+   <img src="teamcity-plugin-2.png" alt="Navigating to the step configuration" width="706" border-effect="line"/>
 
-3. For **Step name**, specify an optional name, for example, "Add qodana.yaml".
+3. On the **Build steps** page, click the **Add build step** button.
+   <img src="teamcity-plugin-3.png" alt="Creating a new build step" width="706" border-effect="line"/>
 
-4. For **Run**, select **Custom script**.
+4. From the **Runner type** list, select **Command Line**. On the **New Build Step** page, you can configure the 
+   `Command Line` runner using the basic options. Otherwise, click **Show advanced options** to expand the list of configuration options.
+   <img src="teamcity-plugin-5.png" alt="Expanding all configuration options of the Command Line runner" width="706" border-effect="line"/>
 
-5. In the **Custom script** editor, write a script that adds a custom `qodana.yaml` to the working directory. 
+5. Fill in the fields using this description.
 
-   In the example below, the script appends the following inspection exclusions to the configuration file:
+   **Step name** uniquely identifies this step among other build steps.
 
-```shell
-#!/bin/sh
+   **Execute step** configures the build condition that will trigger this build step.
 
-FILE="./qodana.yaml"
+   **Working directory** sets the directory for the build process. For more information, see the [TeamCity](https://www.jetbrains.com/help/teamcity/2021.2/build-working-directory.html) documentation. You can leave this field empty if the `Checkout directory` parameter is specified on the **Version Control Settings** tab.
 
-/bin/cat <<EOM >$FILE
-exclude:
-  - name: Annotator
-  - name: AnotherInspectionId
-    paths:
-      - relative/path
-      - another/relative/path
-  - name: CloneFinder
-  - name: ProhibitedDependencyLicense
+   From the **Run** list, select the **Custom script** option.
+
+   In the **Custom script** editor, write a script that adds a custom `qodana.yaml` to the working directory. In the 
+   example below, the script appends the following inspection exclusions to the configuration file:
+
+   ```shell
+   #!/bin/sh
+   
+   FILE="./qodana.yaml"
+   
+   /bin/cat <<EOM >$FILE
+   exclude:
+   - name: Annotator
+   - name: AnotherInspectionId
+     paths:
+       - relative/path
+       - another/relative/path
+   - name: CloneFinder
+   - name: ProhibitedDependencyLicense
   
-EOM  
-```
+   EOM  
+   ```
+
+   The **Run step within Docker container** lets you run a build step inside the specified Docker image.
 
 ### Add a Qodana runner
 
@@ -66,9 +82,9 @@ Assuming that you have already created your [project](https://www.jetbrains.com/
 3. On the **Build steps** page, click the **Add build step** button.
    <img src="teamcity-plugin-3.png" alt="Creating a new build step" width="706" border-effect="line"/>
 
-4. Using the **Runner type** list, select **Qodana** as a runner. On the **New Build Step** page, you can configure the `Qodana` runner
+4. From the **Runner type** list, select **Qodana** as a runner. On the **New Build Step** page, you can configure the `Qodana` runner
 using the basic options. Otherwise, click **Show advanced options** to expand the list of configuration options.
-   <img src="teamcity-plugin-4.png" alt="Exposing all configuration options of the Qodana runner" width="706" border-effect="line"/>
+   <img src="teamcity-plugin-4.png" alt="Expanding all configuration options of the Qodana runner" width="706" border-effect="line"/>
    
 5. Fill in the fields using this description.
 
@@ -84,7 +100,7 @@ using the basic options. Otherwise, click **Show advanced options** to expand th
 
    The **Forward reports to TeamCity Tests** checkbox configures forwarding all Qodana inspection reports to TeamCity Tests for further investigation.
 
-   **Linter** configures the Qodana linter. For details, see the [Linters](linters.md) section.
+   **Linter** configures the [Qodana Linter](linters.md).
 
    **Version** is by default set to `Latest`.
 
