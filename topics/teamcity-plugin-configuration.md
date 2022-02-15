@@ -29,17 +29,10 @@ Custom profile configuration for Qodana linters is stored in `qodana.yaml`. When
    `Command Line` runner using the basic options. Otherwise, click **Show advanced options** to expand the list of configuration options.
    <img src="teamcity-plugin-5.png" alt="Expanding all configuration options of the Command Line runner" width="706" border-effect="line"/>
 
-5. Fill in the fields using this description.
+5. Fill in the fields using the [Command Line](https://www.jetbrains.com/help/teamcity/command-line.html#General+Settings) 
+   runner description from the TeamCity documentation portal. 
 
-   **Step name** uniquely identifies this step among other build steps.
-
-   **Execute step** configures the build condition that will trigger this build step.
-
-   **Working directory** sets the directory for the build process. For more information, see the [TeamCity](https://www.jetbrains.com/help/teamcity/2021.2/build-working-directory.html) documentation. You can leave this field empty if the `Checkout directory` parameter is specified on the **Version Control Settings** tab.
-
-   From the **Run** list, select the **Custom script** option.
-
-   In the **Custom script** editor, write a script that adds a custom `qodana.yaml` to the working directory. In the 
+   In the **Custom script** editor, paste a script that adds a custom `qodana.yaml` to the working directory. In the 
    example below, the script appends the following inspection exclusions to the configuration file:
 
    ```shell
@@ -60,9 +53,7 @@ Custom profile configuration for Qodana linters is stored in `qodana.yaml`. When
    EOM  
    ```
 
-   The **Run step within Docker container** lets you run a build step inside the specified Docker image.
-
-### Add a Qodana runner
+### Add a Qodana runner 
 
 <!-- Documentation about 'qodana run' parameters needs to be created -->
 <!-- Link to the entry point arguments needs to be improved, currently it doesn't work properly -->
