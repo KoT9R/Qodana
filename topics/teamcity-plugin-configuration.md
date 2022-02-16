@@ -58,10 +58,6 @@ Custom profile configuration for Qodana linters is stored in `qodana.yaml`. When
 <!-- Documentation about 'qodana run' parameters needs to be created -->
 <!-- Link to the entry point arguments needs to be improved, currently it doesn't work properly -->
 
-
-2. Select **Add build step**.
-3. Fill in the fields according to this table:
-
 Assuming that you have already created your [project](https://www.jetbrains.com/help/teamcity/configure-and-run-your-first-build.html#Create+your+first+project) and configured your build, follow the steps below.    
 
 1. Navigate to your build configuration.
