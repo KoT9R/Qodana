@@ -83,8 +83,6 @@ using the basic options. Otherwise, click **Show advanced options** to expand th
 
    **Report ID** uniquely identifies the report to let you distinguish between multiple reports when several inspection steps are configured within a single build.
 
-   **Fail threshold** configures the maximum number of problems accepted by Qodana without failing a build, specified as an integer value. For more information, see the [Quality gate](quality-gate.xml) section.
-
    The **Forward reports to TeamCity Tests** checkbox configures forwarding all Qodana inspection reports to TeamCity Tests for further investigation.
 
    **Linter** configures the [Qodana Linter](linters.md).
