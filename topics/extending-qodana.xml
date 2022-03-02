@@ -6,6 +6,8 @@
        title="Extending Qodana"
        id="extending-qodana">
 
+    <var name="struct-search" value="www.jetbrains.com/help/idea/tutorial-work-with-structural-search-and-replace.html#ssr_inspection_settings"/>
+
     <p>Although %product% provides <a href="qodana-yaml.md">various profiles</a> for inspecting your code, it may be
         useful to analyze your codebase using third-party inspections that are not covered by standard %product% profiles.
         This can done in several ways, such as: </p>
@@ -13,13 +15,13 @@
     <list>
         <li><a anchor="extending-qodana-marketplace-plugins">Using plugins from JetBrains Marketplace</a></li>
         <li><a anchor="extending-qodana-structural-search">Creating Structural search-based inspections</a></li>
-        <li>Developing custom plugins to inspect code</li>
+        <li>Developing plugins</li>
     </list>
 
     <chapter id="extending-qodana-marketplace-plugins" title="Plugins from JetBrains Marketplace">
 
         <p><a href="https://plugins.jetbrains.com/">JetBrains Marketplace</a> provides plugins for inspecting code in
-            the IDE These plugins can be used to extend %product% inspection functionality.</p>
+            the IDE. These plugins can be used to extend %product% inspection functionality.</p>
 
     <p>To extend %product% with a third-party plugin, you need to accomplish these steps:</p>
     <list>
@@ -52,7 +54,7 @@
             available depending on the profile type:
         </step>
         <step>
-            Optionally, you may require additional plugin configuration options that are usually configured in the
+            Optionally, you may need additional plugin configuration options that are usually configured in the
             <menupath>Settings</menupath> window of your IDE. Such file is available in the <code>options</code>
             subdirectory of the
             <a href="https://www.jetbrains.com/help/idea/directories-used-by-the-ide-to-store-settings-caches-plugins-and-logs.html#config-directory">configuration directory</a>
@@ -90,19 +92,28 @@
     <p><a href="https://www.jetbrains.com/help/idea/structural-search-and-replace.html">Structural search</a> lets you
     inspect your code based on a particular code pattern or grammatical construct in your code.</p>
 
-    <p>For demonstration purposes, this section uses the
-        <a href="https://www.jetbrains.com/help/idea/search-templates.html">search template</a> from this image:</p>
+    <p>For demonstration purposes, this section uses the <emphasis>$Instance$.$MethodCall$($Parameter$)</emphasis>
+        <a href="https://www.jetbrains.com/help/idea/search-templates.html">search template</a> using these filters:</p>
 
-    <!-- This needs to be replaced in the tabular form.  -->
+    <table>
+        <tr><td>Variable</td><td>Value</td><td>Explanation</td></tr>
+        <tr><td>$Instance$</td><td>[0,1]</td><td>Zero or one value.</td></tr>
+        <tr><td>$MethodCall$</td><td>text=println</td><td>Searching for the <emphasis>println</emphasis> method.</td></tr>
+        <tr><td>$Parameter$</td><td>text=^\".*\"$</td><td>Any text enclosed in the pair of quote (<emphasis>"</emphasis>) characters.</td></tr>
+    </table>
 
-    <img src="extending-qodana-1.png" dark-src="extending-qodana-1_dark.png" alt="Search template" width="706"/>
-
-    <!-- This needs to be reviewed once more -->
     <p>This template lets you search for the <code lang="java">System.out.println()</code> Java statement with hardcoded
         text like <code lang="java">System.out.println("Hardcoded text!")</code>.</p>
 
-    <p>This search template can be converted to the inspection </p>
+    <p>This image shows how it looks in the <menupath>Structural Search</menupath> window:</p>
 
+    <img src="extending-qodana-1.png" dark-src="extending-qodana-1_dark.png" alt="Search template" width="706"/>
+
+    <p>This search template can be converted to the inspection as described in the
+        <a href="https://%struct-search%">Work with structural search and replace</a> section of the IntelliJ IDEA
+        documentation portal.</p>
+
+    <p></p>
 </chapter>
 
     <!-- For a custom plugin, I will need to show the SARIF structure so that a user understands how they will need to export data -->
