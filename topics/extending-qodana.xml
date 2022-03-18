@@ -15,18 +15,18 @@
     <list>
         <li><a anchor="extending-qodana-marketplace-plugins">Using plugins from JetBrains Marketplace</a></li>
         <li><a anchor="extending-qodana-structural-search">Creating Structural search-based inspections</a></li>
-        <li>Developing plugins</li>
+        <li>Developing plugins from scratch.</li>
     </list>
 
     <chapter id="extending-qodana-marketplace-plugins" title="Plugins from JetBrains Marketplace">
 
         <p><a href="https://plugins.jetbrains.com/">JetBrains Marketplace</a> provides plugins for inspecting code in
-            the IDE. These plugins can be used to extend %product% inspection functionality.</p>
+            the IDE. These plugins can be used to extend the %product% inspection functionality.</p>
 
     <p>To extend %product% with a third-party plugin, you need to accomplish these steps:</p>
     <list>
-        <li>Install the plugin to your IDE and enable the required inspections</li>
-        <li>Create the XML-formatted profile file containing the enabled inspections</li>
+        <li>Install the plugin to your IDE and enable it</li>
+        <li>Create an XML-formatted profile file containing the enabled inspections</li>
         <li>Mount the plugin file to the %product% linter image</li>
         <li>Specify the profile file in <code>qodana.yaml</code>.</li>
     </list>
@@ -38,20 +38,20 @@
     <!-- All other moments from the issue description should be reflected here as well -->
 
     <!-- This introduction can be deleted -->
-    <p>This section explains how to inspect your PHP code using the <a href="qodana-php.md"/> linter and extended with the
-        <a href="https://plugins.jetbrains.com/plugin/7622-php-inspections-ea-extended-"/> plugin inspections. All
-        actions taken in the IDE are explained for PhpStorm. You can reproduce all these steps for practically any plugin
-        you would like to extend %product% with.</p>
+    <p>This section explains how to inspect your PHP code using the
+        <a href="https://plugins.jetbrains.com/plugin/7622-php-inspections-ea-extended-">Php Inspections (EA Extended)</a>
+        plugin based on the <a href="qodana-php.md"/> linter. All actions taken in the IDE are explained for PhpStorm.
+        You can reproduce these steps for any plugin from JetBrains Marketplace you would like to extend %product% with.</p>
 
     <procedure>
-        <step>To install and enable the plugin in your IDE, follow instructions from the
+        <!-- I need to clarify what this step is needed for -->
+        <step>To generate the profile file in your IDE, you need to install the plugin and enable it as described in the
             <a href="https://www.jetbrains.com/help/phpstorm/managing-plugins.html">Php Inspections (EA Extended)</a>
-            page on the PhpStorm documentation portal. This step is required for creating the profile file in the IDE.
+            section on the PhpStorm documentation portal.
             You can also reuse the plugin file for running %product% with it. Alternatively, you can download the plugin
             package from the JetBrains Marketplace and save it to the directory that can be accessible to %product%.</step>
         <step>Save the updated profile file containing the enabled plugin inspections in your IDE as described in the
-            <a href="https://www.jetbrains.com/help/phpstorm/customizing-profiles.html"/> section. This file will become
-            available depending on the profile type:
+            <a href="https://www.jetbrains.com/help/phpstorm/customizing-profiles.html">Configure profiles</a> section.
         </step>
         <step>
             Optionally, you may need additional plugin configuration options that are usually configured in the
