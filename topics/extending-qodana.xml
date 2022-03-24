@@ -14,8 +14,8 @@
 
     <list>
         <li><a anchor="extending-qodana-marketplace-plugins">Using plugins from JetBrains Marketplace</a></li>
-        <li><a anchor="extending-qodana-structural-search">Creating Structural search-based inspections</a></li>
-        <li>Developing plugins from scratch.</li>
+        <li><a anchor="extending-qodana-developing-plugins">Using custom plugins developed from scratch</a></li>
+        <li><a anchor="extending-qodana-structural-search">Creating inspections based on structural search</a></li>
     </list>
 
     <chapter id="extending-qodana-marketplace-plugins" title="Plugins from JetBrains Marketplace">
@@ -23,46 +23,32 @@
         <p><a href="https://plugins.jetbrains.com/">JetBrains Marketplace</a> provides plugins for inspecting code in
             the IDE. These plugins can be used to extend the %product% inspection functionality.</p>
 
-    <p>Before using a third-party plugin, you need to accomplish these steps:</p>
-    <list>
-        <li>Install the plugin to your IDE and enable it</li>
-        <li>Create an XML-formatted profile file containing the enabled inspections</li>
-        <li>Mount the plugin file to the %product% linter image</li>
-        <li>Specify the profile file in <code>qodana.yaml</code>.</li>
-    </list>
-
-    <!-- The first two parameters are described here: https://www.jetbrains.com/help/idea/directories-used-by-the-ide-to-store-settings-caches-plugins-and-logs.html#config-directory -->
-    <!-- This is where the profile file is contained: ~/.config/JetBrains/IntelliJIdea2021.2/inspection -->
-    <!-- This path contains files for additional configuration ~/.config/JetBrains/IntelliJIdea2021.2/options -->
-    <!-- This is the directory for containing the plugin file: /home/Anton.Samarin/.local/share/JetBrains/PhpStorm2021.3-->
-    <!-- All other moments from the issue description should be reflected here as well -->
-
-    <!-- This introduction can be deleted -->
     <p>This section explains how to inspect PHP code using the
         <a href="https://plugins.jetbrains.com/plugin/7622-php-inspections-ea-extended-">Php Inspections (EA Extended)</a>
         plugin and the <a href="qodana-php.md"/> linter. All actions taken in the IDE are explained for PhpStorm.
         You can reproduce these steps for any plugin from JetBrains Marketplace you would like to extend %product% with.</p>
 
     <procedure>
-        <step>Install the plugin and enable it as explained in the
-            <a href="https://www.jetbrains.com/help/phpstorm/managing-plugins.html">Php Inspections (EA Extended)</a>
-            section on the PhpStorm documentation portal. </step>
-        <step>Configure the inspections of the Php Inspections (EA Extended) plugin.</step>
-        <step>Save the updated profile file containing the enabled plugin inspections in your IDE as described in the
+        <step>Install the plugin and enable it as explained on the
+            <a href="https://www.jetbrains.com/help/phpstorm/managing-plugins.html">Install plugins</a> section of the
+            PhpStorm documentation portal. </step>
+        <step>Configure the Php Inspections (EA Extended) plugin inspections. For more details, see the
+            <a href="https://www.jetbrains.com/help/phpstorm/inspections-settings.html">Inspections</a> page.</step>
+        <step>Export the profile containing the enabled plugin inspections as described in the
             <a href="https://www.jetbrains.com/help/phpstorm/customizing-profiles.html">Configure profiles</a> section.
         </step>
         <step>
-            <menupath>(Optionally)</menupath> You may need additional plugin configuration options that are usually configured in the
-            <menupath>Settings</menupath> window of your IDE. Such file is available in the <code>options</code>
-            subdirectory of the
+            <menupath>(Optionally)</menupath> You may need additional plugin configuration options that are usually
+            configured in the <menupath>Settings</menupath> window of your IDE. In case of the
+            <a href="https://plugins.jetbrains.com/plugin/7622-php-inspections-ea-extended-">Php Inspections (EA Extended)</a>
+            plugin, this may be required for specifying Yoda style rules. These options are contained in the
+            <code>options</code> subdirectory of the
             <a href="https://www.jetbrains.com/help/idea/directories-used-by-the-ide-to-store-settings-caches-plugins-and-logs.html#config-directory">configuration directory</a>
-            of your IDE. In case of the
-            <a href="https://plugins.jetbrains.com/plugin/7622-php-inspections-ea-extended-"/> plugin, this step may be
-            required for specifying Yoda style rules.
+            of your IDE.
         </step>
         <step>
             <p>In the project root directory, create the <code>qodana.yaml</code> file and specify the path to the
-                <a href="qodana-yaml.md" anchor="Set+up+a+profile+by+the+path">profile</a> location:</p>
+                <a href="qodana-yaml.md" anchor="Set+up+a+profile+by+the+path">profile</a> location in it:</p>
             <code style="block" lang="yaml">
                 profile:
                     path: path/to/the/profile/file
@@ -75,17 +61,24 @@
                 -v &lt;project-directory&gt;:/data/project/ \
                 -v &lt;report-directory&gt;:/data/results/ \
                 -v &lt;package-file&gt;:/opt/idea/plugins/&lt;package-file&gt; \
-                -v &lt;plugin-config&gt;:/root/.config/idea/options/&lt;file-name&gt; \
-                jetbrains/qodana-&lt;linter&gt; --show-report
+                -v &lt;additional-config&gt;:/root/.config/idea/options/&lt;additional-config&gt; \
+                jetbrains/qodana-php --show-report
             </code>
             <p>Here, <code style="inline">&lt;package-file&gt;</code> specifies the full path to the plugin package
-                location including the full package filename. The <code style="inline">&lt;plugin-config&gt;</code> line
+                location including the full package filename. The <code style="inline">&lt;additional-config&gt;</code> line
                 denotes the full path to the XML-formatted file containing additional plugin configuration.</p>
         </step>
     </procedure>
 
         <!-- I need to add information about the PyLint and MyPy plugins -->
 </chapter>
+
+    <chapter id="extending-qodana-developing-plugins" title="Custom plugins">
+        <p>Development of plugins is discussed in the <a href="https://plugins.jetbrains.com/docs/intellij/getting-started.html"/>
+            section of the IntelliJ Platform Plugin SDK documentation portal. </p>
+        <p>The plugin should export inspection results to the <a href="qodana-sarif-output.md">SARIF format</a> so that it
+            can be parsed by %product% and displayed in a report. </p>
+    </chapter>
 
 <chapter id="extending-qodana-structural-search" title="Structural search">
 
@@ -134,7 +127,7 @@
         </step>
         <step>
             <p>In the project root directory, create the <code>qodana.yaml</code> file and specify the path to the
-                <a href="qodana-yaml.md" anchor="Set+up+a+profile+by+the+path">profile</a> location:</p>
+                <a href="qodana-yaml.md" anchor="Set+up+a+profile+by+the+path">profile</a> location in it:</p>
             <code style="block" lang="yaml">
                 profile:
                     path: path/to/the/profile/file
@@ -144,8 +137,8 @@
             <p>Inspect your code using %product%:</p>
             <code style="block" lang="shell" prompt="$">
                 docker run --rm -p 8080:8080 \
-                -v $(pwd)/project/:/data/project/ \
-                -v $(pwd)/report/:/data/results/ \
+                -v &lt;project-directory&gt;:/data/project/ \
+                -v &lt;report-directory&gt;:/data/results/ \
                 jetbrains/qodana-jvm --show-report
             </code>
         </step>
@@ -155,9 +148,5 @@
             <img src="extending-qodana-ss-inspection-report.png" dark-src="extending-qodana-ss-inspection-report_dark.png" alt="Observing the Structural Search inspection results" width="706" border-effect="line"/>
         </step>
     </procedure>
-
 </chapter>
-
-    <!-- For a custom plugin, I will need to show the SARIF structure so that a user understands how they will need to export data -->
-
 </topic>
