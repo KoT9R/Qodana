@@ -38,11 +38,11 @@
             <a href="https://www.jetbrains.com/help/phpstorm/customizing-profiles.html">Configure profiles</a> section.
         </step>
         <step>
-            <menupath>(Optionally)</menupath> You may need additional plugin configuration options that are usually
+            <menupath>(Optional)</menupath> You may need additional plugin configuration options that are usually
             configured in the <menupath>Settings</menupath> window of your IDE. In case of the
             <a href="https://plugins.jetbrains.com/plugin/7622-php-inspections-ea-extended-">Php Inspections (EA Extended)</a>
-            plugin, this may be required for specifying Yoda style rules. These options are contained in the
-            <code>options</code> subdirectory of the
+            plugin, this may be required for specifying Yoda style rules and are contained in the <code>options</code>
+            subdirectory of the
             <a href="https://www.jetbrains.com/help/idea/directories-used-by-the-ide-to-store-settings-caches-plugins-and-logs.html#config-directory">configuration directory</a>
             of your IDE.
         </step>
