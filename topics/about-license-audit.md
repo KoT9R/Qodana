@@ -4,6 +4,11 @@
 
 <var name="linter" value="Qodana License Audit"/>
 
+<warning>
+The %linter% linter will be discontinued soon. Use <a href="linters.md">technology-specific Qodana linters</a> for inspecting compatibility
+of dependency licenses.
+</warning>
+
 <note>
 
 <include src="lib_qd.xml" include-id="supported-techs">
