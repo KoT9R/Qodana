@@ -8,6 +8,12 @@
 
     <var name="feature" value="Qodana License Audit"/>
 
+    <p>Oftentimes, software projects require various libraries for performing specific tasks in a project.  </p>
+
+    <!-- Examples of licenses can also be provided here to make the whole section clearer -->
+
+    <!-- I need to explain more about license compatibility and what neglecting this rule may lead to. -->
+
     <p>To be able to conform with licenses of your project dependencies, you will need to explore the licenses such dependencies
     are licenses under, and make sure that the license of your project completely conforms with them.</p>
 
@@ -16,11 +22,14 @@
     <p>The %feature% feature employs the <a href="https://spdx.org/licenses/">SPDX License List</a> and provides the
         following features for inspecting compatibility of your project dependencies: </p>
     <list>
-        <li>Inspect license compatibility between your project and project dependencies</li>
-        <li>Ignore specified licenses</li>
-        <li>Override specified licenses in the license matrix</li>
+        <li>Inspect license compatibility between your project and its dependencies</li>
+        <li>Ignore and override specific licenses</li>
         <li>Create customer dependencies for including them into the %product% report</li>
     </list>
+
+    <!-- Definitions of the project license and dependency licenses should be provided here -->
+
+    <chapter title="How it works">
 
     <p>Currently, the %feature% feature supports the JPS, Maven, Gradle, npm, yarn and composer projects.</p>
 
@@ -34,21 +43,55 @@
     </code>
 
     <!-- The universal command from the CLI utilitiy needs to be listed here -->
-    <p>Run %product% using your linter. For example, it can be the universal </p>
+    <p>Run %product% using your linter as described in the
+        <a href="getting-started.md" anchor="Analyze+a+project+locally"/> section.</p>
 
+        <chapter title="Ignoring dependencies">
+            <p>If you need to ignore a specific dependency and its license, you can specify it in <code>qodana.yaml</code>.
+            For example, these lines will let you ignore the licenses of the <code>enshrined/svg-sanitize</code> dependency:</p>
+            <code style="block" lang="yaml">
+                include:
+                - name: CheckDependencyLicenses
+                dependencyIgnores:
+                - name: "enshrined/svg-sanitize"
+            </code>
+        </chapter>
+
+        <!-- Reference to the license matrix should be given here -->
+        <chapter title="Overriding the license matrix">
+            <p>You can alter the standard license matrix or specify the list of dependency licenses that are allowed or
+            prohibited for the specific project license.</p>
+        </chapter>
+
+    </chapter>
+
+    <chapter title="Verifying data">
     <p>Open the %product% report and click the <menupath>Project audit</menupath> tab to see more information about
         license audit results. </p>
 
+        <!-- This needs to be unified with the UI overview section because they should be the same in both sections -->
+
     <img src="license-audit-tab.png" dark-src="license-audit-tab_dark.png" width="706" alt="The License Audit tab" border-effect="line"/>
 
-    <!-- This needs to be reviewed before submitting -->
-    <p>The <menupath>License rules</menupath> tab contains the table of license correspondence. The
-        <menupath>Project license</menupath> column lists
-        license names, while the <menupath>Allowed licenses</menupath> and the <menupath>Prohibited licenses</menupath>
-        columns list the licenses that are compatible and incompatible with the license respectively. This can be
-        helpful when you need to override licenses.</p>
+    <!-- I need to describe why these tabs are here and what useful do they bring to the user -->
+    <p>This tab contains several tabs, such as:</p>
+    <list>
+        <li><menupath>Languages</menupath> enumerates all technologies currently supported by %product%</li>
+        <li><menupath>Translators</menupath> lists all technologies that were involved for inspecting the codebase</li>
+        <li><menupath>Project License</menupath> contains information about the license used in the project</li>
+        <li><menupath>Third-party licenses</menupath> lists all project dependencies and the licenses they use including dependencies
+        that cannot be used under the current project license</li>
+        <li><menupath>License rules</menupath> contains the table of license correspondence. The
+            <menupath>Project license</menupath> column lists license names, while the
+            <menupath>Allowed licenses</menupath> and the <menupath>Prohibited licenses</menupath> columns list the
+            licenses that are compatible and incompatible with the license respectively. This can be helpful when you
+            need to override licenses.
+        </li>
+    </list>
 
     <img src="license-audit-rules.png" dark-src="license-audit-rules_dark.png" width="706" alt="The License rules tab" border-effect="line"/>
+
+    </chapter>
 
 
 
