@@ -8,59 +8,102 @@
 
     <var name="feature" value="Qodana License Audit"/>
 
-    <p>Oftentimes, software projects require various libraries for performing specific tasks in a project.  </p>
-
-    <!-- Examples of licenses can also be provided here to make the whole section clearer -->
-
-    <!-- I need to explain more about license compatibility and what neglecting this rule may lead to. -->
-
-    <p>To be able to conform with licenses of your project dependencies, you will need to explore the licenses such dependencies
-    are licenses under, and make sure that the license of your project completely conforms with them.</p>
-
+    <!-- I need to collect questions that need to be addressed to Viktor -->
     <!-- I need to explain how the linter works and searches for text licenses. I need to ask Viktor about it -->
+    <!-- I need to reflect Viktor's information about how it collects information from unreadable files -->
 
-    <p>The %feature% feature employs the <a href="https://spdx.org/licenses/">SPDX License List</a> and provides the
-        following features for inspecting compatibility of your project dependencies: </p>
+    <p>It is quite common that an inspected application is licensed under a specific license, and it contains a bunch of
+        dependencies being licensed under separate licenses. For example, the table explains whether the application
+        license and licenses of three dependencies are compatible based on the
+        <a href="https://spdx.org/licenses/">SPDX License List</a>.</p>
+
+    <table>
+        <tr>
+            <td>Software</td>
+            <td>Licensed under</td>
+            <td>Allowed under the
+                application license</td>
+        </tr>
+        <tr>
+            <td>Application</td>
+            <td>AFL-2.0</td>
+            <td>&mdash;</td>
+        </tr>
+        <tr>
+            <td>Dependency A</td>
+            <td>AFL-2.1</td>
+            <td>&#x2714;</td>
+        </tr>
+        <tr>
+            <td>Dependency B</td>
+            <td>CPL-1.0</td>
+            <td>&#10008;</td>
+        </tr>
+        <tr>
+            <td>Dependency C</td>
+            <td>AFL-3.0</td>
+            <td>&#x2714;</td>
+        </tr>
+    </table>
+
+    <p>Manual verification of such information can become a tedious task. Besides that, it can be a source of mistakes
+        that will have legal consequences.</p>
+
+    <p>To automate the process of license verification and avoid mistakes, you can use the %feature% feature that
+        implements the <a href="https://spdx.org/licenses/">SPDX License List</a> and provides
+        <a anchor="license-audit-basic-run">basic functionality</a> for exploring license compatibility. In addition,
+        you can alter this feature using these functionalities:</p>
     <list>
-        <li>Inspect license compatibility between your project and its dependencies</li>
-        <li>Ignore and override specific licenses</li>
-        <li>Create customer dependencies for including them into the %product% report</li>
+        <!-- This should contain two links to two subsections -->
+        <li>Ignore dependency licenses</li>
+        <li>Override dependency licenses</li>
+        <li>Create customer dependencies to include them into the %product% report</li>
     </list>
 
-    <!-- Definitions of the project license and dependency licenses should be provided here -->
+    <p>Currently, this feature is included in all existing %product% <a href="linters.md">linters</a>, and you can use
+        it for exploring the JPS, Maven, Gradle, npm, yarn and composer projects.</p>
 
-    <chapter title="How it works">
+    <chapter title="Running %feature%" id="license-audit-basic-run">
 
-    <p>Currently, the %feature% feature supports the JPS, Maven, Gradle, npm, yarn and composer projects.</p>
-
-    <p>This feature is included in all existing %product% <a href="linters.md">linters</a>, so no installation steps are
-    required. All configuration is carried out using the
-        <a href="qodana-yaml.md"><code style="inline">qodana.yaml</code></a> file. To enable the License audit feature,
-        add these lines to <code style="inline">qodana.yaml</code>:</p>
-    <code style="block" lang="yaml">
-        include:
-          - name: CheckDependencyLicenses
-    </code>
-
-    <!-- The universal command from the CLI utilitiy needs to be listed here -->
-    <p>Run %product% using your linter as described in the
-        <a href="getting-started.md" anchor="Analyze+a+project+locally"/> section.</p>
-
-        <chapter title="Ignoring dependencies">
-            <p>If you need to ignore a specific dependency and its license, you can specify it in <code>qodana.yaml</code>.
-            For example, these lines will let you ignore the licenses of the <code>enshrined/svg-sanitize</code> dependency:</p>
+        <chapter title="Enabling the feature">
+            <p>To enable %feature%, add these lines to the <code style="inline">qodana.yaml</code> file in your project
+                root:</p>
             <code style="block" lang="yaml">
                 include:
-                - name: CheckDependencyLicenses
+                  - name: CheckDependencyLicenses
+            </code>
+
+        </chapter>
+
+        <chapter title="Ignoring dependencies">
+            <p>For some reasons, you may need to ignore a specific dependency in your project, which you can additionally
+                specify in <code style="inline">qodana.yaml</code>:</p>
+            <code style="block" lang="yaml">
                 dependencyIgnores:
-                - name: "enshrined/svg-sanitize"
+                - name: "dependency/name"
             </code>
         </chapter>
 
+        <!-- START FROM THIS PLACE -->
+        <!-- I need to test it once more before submitting -->
         <!-- Reference to the license matrix should be given here -->
         <chapter title="Overriding the license matrix">
-            <p>You can alter the standard license matrix or specify the list of dependency licenses that are allowed or
-            prohibited for the specific project license.</p>
+            <p>You can override the <a href="https://spdx.org/licenses/">license matrix</a> and specify the list of
+                dependency licenses that are allowed or prohibited for the specific project license. In this example, the
+            <code>AFL-2.0</code> project license becomes compatible with <code>AGPL-3.0-only</code> and incompatible with
+                <code>Apache-1.0</code>:</p>
+            <code style="block" lang="yaml">
+                licenseRules:
+                   - keys:
+                   - "AFL-2.0"
+                allowed:
+                   - "AGPL-3.0-only"
+                prohibited:
+                   - "Apache-1.0"
+            </code>
+
+            Here, the <code>licenseRules</code>, <code>allowed</code>, and <code>prohibited</code> keys can accept multiple
+            values.
         </chapter>
 
     </chapter>
