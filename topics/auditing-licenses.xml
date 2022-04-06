@@ -11,61 +11,71 @@
     <!-- I need to collect questions that need to be addressed to Viktor -->
     <!-- I need to explain how the linter works and searches for text licenses. I need to ask Viktor about it -->
     <!-- I need to reflect Viktor's information about how it collects information from unreadable files -->
+    <!-- All terminology needs to be reviewed at the final stage -->
+    <!-- Do I understand correctly that information about dependencies is read from dependency configuration files -->
 
-    <p>It is quite common that an inspected application is licensed under a specific license, and it contains a bunch of
-        dependencies being licensed under separate licenses. For example, the table explains whether the application
-        license and licenses of three dependencies are compatible based on the
-        <a href="https://spdx.org/licenses/">SPDX License List</a>.</p>
+    <p>It is quite typical that a project is licensed under a specific license, and it uses a bunch of
+        dependencies being licensed under separate licenses. Manual verification of compatibility between
+        the project license and all dependency licenses can become a tedious task. Besides
+        that, dependency licenses prohibited for a specific project license can have legal consequences. </p>
 
-    <table>
-        <tr>
-            <td>Software</td>
-            <td>Licensed under</td>
-            <td>Allowed under the
-                application license</td>
-        </tr>
-        <tr>
-            <td>Application</td>
-            <td>AFL-2.0</td>
-            <td>&mdash;</td>
-        </tr>
-        <tr>
-            <td>Dependency A</td>
-            <td>AFL-2.1</td>
-            <td>&#x2714;</td>
-        </tr>
-        <tr>
-            <td>Dependency B</td>
-            <td>CPL-1.0</td>
-            <td>&#10008;</td>
-        </tr>
-        <tr>
-            <td>Dependency C</td>
-            <td>AFL-3.0</td>
-            <td>&#x2714;</td>
-        </tr>
-    </table>
+    <p> To automate the process of license verification and mistakes connected with manual verification, you can use
+        the %feature% feature that implements the <a href="https://spdx.org/licenses/">SPDX License List</a> for
+        exploring license compatibility. This feature is included in all existing %product%
+        <a href="linters.md">linters</a>, and you can use it for exploring the JPS, Maven, Gradle, npm, yarn and
+        composer projects.</p>
 
-    <p>Manual verification of such information can become a tedious task. Besides that, it can be a source of mistakes
-        that will have legal consequences.</p>
+    <chapter title="How it works">
 
-    <p>To automate the process of license verification and avoid mistakes, you can use the %feature% feature that
-        implements the <a href="https://spdx.org/licenses/">SPDX License List</a> and provides
-        <a anchor="license-audit-basic-run">basic functionality</a> for exploring license compatibility. In addition,
-        you can alter this feature using these functionalities:</p>
-    <list>
-        <!-- This should contain two links to two subsections -->
-        <li>Ignore dependency licenses</li>
-        <li>Override dependency licenses</li>
-        <li>Create customer dependencies to include them into the %product% report</li>
-    </list>
+        <p>For example, a project is licensed under the AFL-2.0 license and uses three dependencies licensed under
+            the AFL-2.1, CPL-1.0, and AFL-3.0 licenses. Using the <a href="https://spdx.org/licenses/">SPDX License List</a>,
+            this table explains which dependency licenses are compatible with the project license.</p>
 
-    <p>Currently, this feature is included in all existing %product% <a href="linters.md">linters</a>, and you can use
-        it for exploring the JPS, Maven, Gradle, npm, yarn and composer projects.</p>
+        <table>
+            <tr>
+                <td>Software</td>
+                <td>Licensed under</td>
+                <td>Compatible with the project license</td>
+            </tr>
+            <tr>
+                <td>Project software</td>
+                <td>AFL-2.0</td>
+                <td>&mdash;</td>
+            </tr>
+            <tr>
+                <td>Dependency A</td>
+                <td>AFL-2.1</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>Dependency B</td>
+                <td>CPL-1.0</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>Dependency C</td>
+                <td>AFL-3.0</td>
+                <td>Yes</td>
+            </tr>
+        </table>
 
-    <chapter title="Running %feature%" id="license-audit-basic-run">
+        <p>After %product% analyzes your project, such information is available in a
+            <a anchor="license-audit-verifying-data">report</a>.</p>
 
-        <chapter title="Enabling the feature">
+    </chapter>
+
+    <chapter title="Running %feature%" id="license-audit-running-feature">
+
+
+            <p>After you <a anchor="license-audit-basic-usecase">enable</a> %feature%, you can also configure it to:</p>
+        <list>
+            <li><a anchor="license-audit-ignoring-dependencies">Ignore dependency licenses</a></li>
+            <li><a anchor="license-allow-prohibit-licenses">Allow or prohibit dependency licenses</a></li>
+            <li><a anchor="license-audit-override-license">Override a dependency license</a></li>
+            <li><a anchor="license-audit-custom-dependencies">Create custom dependencies</a></li>
+        </list>
+
+        <chapter title="Enable the feature" id="license-audit-basic-usecase">
             <p>To enable %feature%, add these lines to the <code style="inline">qodana.yaml</code> file in your project
                 root:</p>
             <code style="block" lang="yaml">
@@ -75,7 +85,7 @@
 
         </chapter>
 
-        <chapter title="Ignoring dependencies">
+        <chapter title="Ignore dependencies" id="license-audit-ignoring-dependencies">
             <p>For some reasons, you may need to ignore a specific dependency in your project, which you can additionally
                 specify in <code style="inline">qodana.yaml</code>:</p>
             <code style="block" lang="yaml">
@@ -84,31 +94,71 @@
             </code>
         </chapter>
 
-        <!-- START FROM THIS PLACE -->
         <!-- I need to test it once more before submitting -->
-        <!-- Reference to the license matrix should be given here -->
-        <chapter title="Overriding the license matrix">
+        <chapter title="Allow or prohibit dependency licenses" id="license-allow-prohibit-licenses">
             <p>You can override the <a href="https://spdx.org/licenses/">license matrix</a> and specify the list of
-                dependency licenses that are allowed or prohibited for the specific project license. In this example, the
-            <code>AFL-2.0</code> project license becomes compatible with <code>AGPL-3.0-only</code> and incompatible with
-                <code>Apache-1.0</code>:</p>
+                dependency licenses that are allowed or prohibited for the specific project license.</p>
+            <p>In this snippet, the <code>keys</code> key accepts application licenses, and the <code>allowed</code> and
+                <code>prohibited</code> keys specify the lists of allowed and prohibited dependency licenses respectively.
+                As a result, the <code>AGPL-3.0-only</code> becomes compatible with the <code>AFL-2.0</code> project
+                license, while the <code>Apache-1.0</code> dependency license is now prohibited for using by the
+                project license.</p>
             <code style="block" lang="yaml">
                 licenseRules:
-                   - keys:
-                   - "AFL-2.0"
+                  - keys:
+                      - "AFL-2.0"
                 allowed:
-                   - "AGPL-3.0-only"
+                  - "AGPL-3.0-only"
                 prohibited:
-                   - "Apache-1.0"
+                  - "Apache-1.0"
+            </code>
+            <p>All keys from this sample can accept several values.</p>
+        </chapter>
+
+        <!-- This still requires some explanations -->
+
+        <chapter title="Override a dependency license" id="license-audit-override-license">
+            <p>You can override a dependency license identifier. This can be useful when a dependency is dual-licensed
+                and you want to omit some license, or when the license name cannot be detected from the dependency
+                sources correctly.</p>
+            <p>Using this sample,
+                %product% will detect only the <code>CDDL-1.1</code> and
+                <code>GPL-2.0-with-classpath-exception</code> licenses for <code>jaxb-runtime</code> version 2.3.1.</p>
+
+            <code style="block" lang="yaml">
+                dependencyOverrides:
+                  - name: "jaxb-runtime"
+                    version: "2.3.1"
+                    url: "https://github.com/javaee/jaxb-v2"
+                    licenses:
+                      - key: "CDDL-1.1"
+                      url: "https://github.com/javaee/jaxb-v2/blob/master/LICENSE"
+                      - key: "GPL-2.0-with-classpath-exception"
+                      url: "https://github.com/javaee/jaxb-v2/blob/master/LICENSE"
+            </code>
+        </chapter>
+
+        <chapter title="Create custom dependencies" id="license-audit-custom-dependencies">
+
+            <p>If you want to include the dependency that should be mentioned in the report but is impossible to detect
+                from the project sources, you can use the <code>customDependencies</code> key to specify it:</p>
+
+            <code style="block" lang="yaml">
+                customDependencies:
+                  - name: ".babelrc JSON Schema (.babelrc-schema.json)"
+                version: "JSON schema for Babel 6+ configuration files"
+                licenses:
+                  - key: "Apache-2.0"
+                url: "https://github.com/SchemaStore/schemastore/blob/master/LICENSE"
             </code>
 
-            Here, the <code>licenseRules</code>, <code>allowed</code>, and <code>prohibited</code> keys can accept multiple
-            values.
+            <!-- I need to explain what is what in this snippet. Need to ask Viktor about it -->
+
         </chapter>
 
     </chapter>
 
-    <chapter title="Verifying data">
+    <chapter title="Verifying data" id="license-audit-verifying-data">
     <p>Open the %product% report and click the <menupath>Project audit</menupath> tab to see more information about
         license audit results. </p>
 
