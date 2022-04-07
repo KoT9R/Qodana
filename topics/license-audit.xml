@@ -4,7 +4,7 @@
 <topic xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/stardust/topic.v2.xsd"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        title="License audit"
-       id="auditing-licenses.xml">
+       id="license-audit.xml">
 
     <var name="feature" value="Qodana License Audit"/>
 
@@ -14,10 +14,10 @@
     <!-- All terminology needs to be reviewed at the final stage -->
     <!-- Do I understand correctly that information about dependencies is read from dependency configuration files -->
 
-    <p>It is quite typical that a project is licensed under a specific license, and it uses a bunch of
-        dependencies being licensed under separate licenses. Manual verification of compatibility between
-        the project license and all dependency licenses can become a tedious task. Besides
-        that, dependency licenses prohibited for a specific project license can have legal consequences. </p>
+    <p>If a project is licensed under a specific license and employs a bunch of dependencies being licensed under
+        separate licenses. Manual verification of compatibility between the project license and all dependency licenses
+        can become a tedious task. Besides that, dependency licenses prohibited for a specific project license can have
+        legal consequences. </p>
 
     <p> To automate the process of license verification and mistakes connected with manual verification, you can use
         the %feature% feature that implements the <a href="https://spdx.org/licenses/">SPDX License List</a> for
@@ -139,7 +139,6 @@
         </chapter>
 
         <chapter title="Create custom dependencies" id="license-audit-custom-dependencies">
-
             <p>If you want to include the dependency that should be mentioned in the report but is impossible to detect
                 from the project sources, you can use the <code>customDependencies</code> key to specify it:</p>
 
@@ -151,41 +150,13 @@
                   - key: "Apache-2.0"
                 url: "https://github.com/SchemaStore/schemastore/blob/master/LICENSE"
             </code>
-
             <!-- I need to explain what is what in this snippet. Need to ask Viktor about it -->
-
         </chapter>
 
     </chapter>
 
     <chapter title="Verifying data" id="license-audit-verifying-data">
-    <p>Open the %product% report and click the <menupath>Project audit</menupath> tab to see more information about
-        license audit results. </p>
-
-        <!-- This needs to be unified with the UI overview section because they should be the same in both sections -->
-
-    <img src="license-audit-tab.png" dark-src="license-audit-tab_dark.png" width="706" alt="The License Audit tab" border-effect="line"/>
-
-    <!-- I need to describe why these tabs are here and what useful do they bring to the user -->
-    <p>This tab contains several tabs, such as:</p>
-    <list>
-        <li><menupath>Languages</menupath> enumerates all technologies currently supported by %product%</li>
-        <li><menupath>Translators</menupath> lists all technologies that were involved for inspecting the codebase</li>
-        <li><menupath>Project License</menupath> contains information about the license used in the project</li>
-        <li><menupath>Third-party licenses</menupath> lists all project dependencies and the licenses they use including dependencies
-        that cannot be used under the current project license</li>
-        <li><menupath>License rules</menupath> contains the table of license correspondence. The
-            <menupath>Project license</menupath> column lists license names, while the
-            <menupath>Allowed licenses</menupath> and the <menupath>Prohibited licenses</menupath> columns list the
-            licenses that are compatible and incompatible with the license respectively. This can be helpful when you
-            need to override licenses.
-        </li>
-    </list>
-
-    <img src="license-audit-rules.png" dark-src="license-audit-rules_dark.png" width="706" alt="The License rules tab" border-effect="line"/>
-
+        <include src="lib_qd.xml" include-id="license-audit-tab" use-filter="license-audit,empty"/>
     </chapter>
-
-
 
 </topic>
