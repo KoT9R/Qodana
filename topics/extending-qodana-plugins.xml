@@ -9,8 +9,8 @@
     <var name="inspection-url" value="plugins.jetbrains.com/docs/intellij/code-inspections-and-intentions.html#inspections"/>
 
     <p>You can extend %product% inspection functionality using either
-        <a anchor="extending-qodana-marketplace-plugins">plugins from JetBrains Marketplace</a> or use plugins
-        <a anchor="extending-qodana-developing-plugins">developed from scratch</a>.</p>
+        <a anchor="extending-qodana-marketplace-plugins">plugins from JetBrains Marketplace</a> or use
+        <a anchor="extending-qodana-developing-plugins">custom-developed</a> plugins.</p>
 
     <chapter id="extending-qodana-marketplace-plugins" title="Plugins from JetBrains Marketplace">
 
@@ -19,7 +19,7 @@
 
         <p>This section explains how to inspect PHP code using the
             <a href="https://plugins.jetbrains.com/plugin/7622-php-inspections-ea-extended-">Php Inspections (EA Extended)</a>
-            plugin and the <a href="qodana-php.md"/> linter. All actions taken in the IDE are explained for PhpStorm.
+            plugin with the <a href="qodana-php.md"/> linter. All actions taken in the IDE are explained for PhpStorm.
             You can reproduce these steps for any plugin from JetBrains Marketplace you would like to extend %product% with.</p>
 
         <procedure>
@@ -67,7 +67,8 @@
     </chapter>
 
     <chapter id="extending-qodana-developing-plugins" title="Custom plugins">
-        <p>To learn how to develop plugins, you can study the <a href="https://plugins.jetbrains.com/docs/intellij/getting-started.html"/>
+        <p>To learn how to develop plugins, you can study the
+            <a href="https://plugins.jetbrains.com/docs/intellij/getting-started.html">Creating Your First Plugin</a>
             page of the IntelliJ Platform Plugin SDK documentation portal. Besides that, each plugin should perform
             inspections and produce inspection results as described in the
             <a href="https://%inspection-url%">Inspections</a> section of the documentation portal. </p>

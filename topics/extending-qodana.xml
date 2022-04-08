@@ -12,7 +12,7 @@
         third-party inspection tools that are not covered by standard %product% packages, and you can do it in several
         ways:</p>
         <list>
-            <li><a href="extending-qodana-plugins.xml">Using existing plugins from JetBrains Marketplace or developing custom plugins</a></li>
+            <li><a href="extending-qodana-plugins.xml">Using various plugins</a></li>
             <li><a href="extending-qodana-structural-search.xml">Using Structural search patterns</a></li>
         </list>
 
