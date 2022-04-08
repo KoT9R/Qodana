@@ -13,7 +13,7 @@
         ways:</p>
         <list>
             <li><a href="extending-qodana-plugins.xml">Using various plugins</a></li>
-            <li><a href="extending-qodana-structural-search.xml">Using Structural search patterns</a></li>
+            <li><a href="extending-qodana-structural-search.xml">Using structural search patterns</a></li>
         </list>
 
 </topic>
