@@ -8,15 +8,19 @@
 
     <var name="struct-search" value="www.jetbrains.com/help/idea/tutorial-work-with-structural-search-and-replace.html#ssr_inspection_settings"/>
 
-        <p><a href="https://www.jetbrains.com/help/idea/structural-search-and-replace.html">Structural search</a> lets you
-            inspect your code based on a particular code pattern or grammatical construct.</p>
+    <p><a href="https://www.jetbrains.com/help/idea/structural-search-and-replace.html">Structural search</a> is a
+        powerful and flexible mechanism built into JetBrains IDEs. It employs search templates to let you inspect the
+        codebase taking into account its semantics. You can create your own search templates and use them as
+        %product% inspections.</p>
 
-        <p>As an example, consider the following <a href="https://www.jetbrains.com/help/idea/search-templates.html">search template</a>:</p>
+    <chapter title="How it works" id="extending-qodana-structural-search-example">
+
+        <p>As an example, consider this <a href="https://www.jetbrains.com/help/idea/search-templates.html">search template</a>:</p>
         <code style="block">$Instance$.$MethodCall$($Parameter$)</code>
 
-        <p>This template lets you detect the <code lang="java">System.out.println()</code> Java statement with hardcoded text
-            like <code lang="java">System.out.println("Hardcoded text!")</code>. This table describes the values of each
-            variable that the search template can accept:</p>
+        <p>This template lets you detect the <code lang="java">System.out.println()</code> Java statement with hardcoded
+            text like <code lang="java">System.out.println("Hardcoded text!")</code>. This table describes the values of
+            each variable that the search template can accept:</p>
         <table>
             <tr><td>Variable</td><td>Value</td><td>Explanation</td></tr>
             <tr><td>$Instance$</td><td>[0,1]</td><td>Accepts zero or one value.</td></tr>
@@ -30,7 +34,7 @@
             <step>
                 <p>Using the
                     <menupath><a href="https://www.jetbrains.com/help/idea/structural-search-and-replace.html#to_search_structurally">Structural Search</a></menupath>
-                    dialog of IntelliJ IDEA, you can create the template as shown below:</p>
+                    dialog of IntelliJ IDEA, create the template:</p>
                 <img src="extending-qodana-1.png" dark-src="extending-qodana-1_dark.png" alt="Search template" width="706" border-effect="line"/>
             </step>
             <step>
@@ -74,5 +78,7 @@
                 <img src="extending-qodana-ss-inspection-report.png" dark-src="extending-qodana-ss-inspection-report_dark.png" alt="Observing the Structural Search inspection results" width="706" border-effect="line"/>
             </step>
         </procedure>
+
+    </chapter>
 
 </topic>
