@@ -3,20 +3,14 @@
 
 <topic xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/stardust/topic.v2.xsd"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       title="Plugins"
+       title="Existing and custom plugins"
        id="extending-qodana-plugins.xml">
 
     <var name="inspection-url" value="plugins.jetbrains.com/docs/intellij/code-inspections-and-intentions.html#inspections"/>
 
-    <!-- This needs to be rewritten for using plugins only -->
-    <p>Although %product% provides <a href="qodana-yaml.md">various profiles</a> for inspecting your code, it may be
-        useful to analyze your codebase using third-party inspections that are not covered by standard %product% profiles.
-        This can done in several ways, such as: </p>
-
-    <list>
-        <li><a anchor="extending-qodana-marketplace-plugins">Using plugins from JetBrains Marketplace</a></li>
-        <li><a anchor="extending-qodana-developing-plugins">Using custom plugins developed from scratch</a></li>
-    </list>
+    <p>You can extend %product% inspection functionality using either
+        <a anchor="extending-qodana-marketplace-plugins">plugins from JetBrains Marketplace</a> or use plugins
+        <a anchor="extending-qodana-developing-plugins">developed from scratch</a>.</p>
 
     <chapter id="extending-qodana-marketplace-plugins" title="Plugins from JetBrains Marketplace">
 
@@ -70,15 +64,13 @@
             </step>
         </procedure>
 
-        <!-- I need to add information about the PyLint and MyPy plugins -->
     </chapter>
 
-    <!-- This needs to be reviewed once more -->
     <chapter id="extending-qodana-developing-plugins" title="Custom plugins">
-        <p>Plugin development is explained on the <a href="https://plugins.jetbrains.com/docs/intellij/getting-started.html"/>
-            page of the IntelliJ Platform Plugin SDK documentation portal. Besides that, a plugin needs to carry out inspections and
-            produce inspection results as described in the <a href="https://%inspection-url%">Inspections</a> section of
-            this documentation portal. </p>
+        <p>To learn how to develop plugins, you can study the <a href="https://plugins.jetbrains.com/docs/intellij/getting-started.html"/>
+            page of the IntelliJ Platform Plugin SDK documentation portal. Besides that, each plugin should perform
+            inspections and produce inspection results as described in the
+            <a href="https://%inspection-url%">Inspections</a> section of the documentation portal. </p>
     </chapter>
 
 </topic>
