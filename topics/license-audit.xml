@@ -6,7 +6,7 @@
        title="License audit"
        id="license-audit.xml">
 
-    <var name="feature" value="Qodana License Audit"/>
+    <var name="feature" value="License Audit"/>
 
     <!-- I need to collect questions that need to be addressed to Viktor -->
     <!-- I need to explain how the linter works and searches for text licenses. I need to ask Viktor about it -->
@@ -16,11 +16,11 @@
 
     <p>If a project is licensed under a specific license and employs a bunch of dependencies being licensed under
         separate licenses. Manual verification of compatibility between the project license and all dependency licenses
-        can become a tedious task. Besides that, dependency licenses prohibited for a specific project license can have
+        can become a tedious task. Besides that, running dependencies unsuitable for a specific project license can have
         legal consequences. </p>
 
-    <p> To automate the process of license verification and mistakes connected with manual verification, you can use
-        the %feature% feature that implements the <a href="https://spdx.org/licenses/">SPDX License List</a> for
+    <p> To automate the process of license verification and avoid mistakes connected with manual verification, you can
+        use the %feature% feature that implements the <a href="https://spdx.org/licenses/">SPDX License List</a> for
         exploring license compatibility. This feature is included in all existing %product%
         <a href="linters.md">linters</a>, and you can use it for exploring the JPS, Maven, Gradle, npm, yarn and
         composer projects.</p>
@@ -75,7 +75,7 @@
             <li><a anchor="license-audit-custom-dependencies">Create custom dependencies</a></li>
         </list>
 
-        <chapter title="Enable the feature" id="license-audit-basic-usecase">
+        <chapter title="Enable %feature%" id="license-audit-basic-usecase">
             <p>To enable %feature%, add these lines to the <code style="inline">qodana.yaml</code> file in your project
                 root:</p>
             <code style="block" lang="yaml">
@@ -86,8 +86,8 @@
         </chapter>
 
         <chapter title="Ignore dependencies" id="license-audit-ignoring-dependencies">
-            <p>For some reasons, you may need to ignore a specific dependency in your project, which you can additionally
-                specify in <code style="inline">qodana.yaml</code>:</p>
+            <p>For some reasons, you may need to ignore a specific dependency in your project, which can be specified in
+                <code style="inline">qodana.yaml</code>:</p>
             <code style="block" lang="yaml">
                 dependencyIgnores:
                 - name: "dependency/name"
@@ -99,10 +99,9 @@
             <p>You can override the <a href="https://spdx.org/licenses/">license matrix</a> and specify the list of
                 dependency licenses that are allowed or prohibited for the specific project license.</p>
             <p>In this snippet, the <code>keys</code> key accepts application licenses, and the <code>allowed</code> and
-                <code>prohibited</code> keys specify the lists of allowed and prohibited dependency licenses respectively.
+                <code>prohibited</code> keys accept the lists of allowed and prohibited dependency licenses respectively.
                 As a result, the <code>AGPL-3.0-only</code> becomes compatible with the <code>AFL-2.0</code> project
-                license, while the <code>Apache-1.0</code> dependency license is now prohibited for using by the
-                project license.</p>
+                license, while the <code>Apache-1.0</code> dependency license becomes incompatible.</p>
             <code style="block" lang="yaml">
                 licenseRules:
                   - keys:
@@ -112,7 +111,12 @@
                 prohibited:
                   - "Apache-1.0"
             </code>
-            <p>All keys from this sample can accept several values.</p>
+
+            <tip>
+                All keys from this sample can accept several values.
+            </tip>
+
+
         </chapter>
 
         <!-- This still requires some explanations -->
