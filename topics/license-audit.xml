@@ -4,15 +4,14 @@
 <topic xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/stardust/topic.v2.xsd"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        title="License audit"
-       id="license-audit.xml">
+       id="license-audit">
 
     <var name="feature" value="License Audit"/>
 
-    <!-- I need to collect questions that need to be addressed to Viktor -->
-    <!-- I need to explain how the linter works and searches for text licenses. I need to ask Viktor about it -->
-    <!-- I need to reflect Viktor's information about how it collects information from unreadable files -->
+    <!-- I need to explain how the linter works and searches for text licenses, including unreadable files. I need to ask Viktor about it -->
     <!-- All terminology needs to be reviewed at the final stage -->
-    <!-- Do I understand correctly that information about dependencies is read from dependency configuration files -->
+    <!-- Do I understand correctly that information about dependencies is read from dependency configuration files. Need to ask Viktor about it -->
+    <!-- Overriding a dependency license and creating custom dependencies still require some explanations. Need to ask Viktor about it -->
 
     <p>If a project is licensed under a specific license and employs a bunch of dependencies being licensed under
         separate licenses. Manual verification of compatibility between the project license and all dependency licenses
@@ -25,7 +24,7 @@
         <a href="linters.md">linters</a>, and you can use it for exploring the JPS, Maven, Gradle, npm, yarn and
         composer projects.</p>
 
-    <chapter title="How it works">
+    <chapter title="How it works" id="license-audit-how-it-works">
 
         <p>For example, a project is licensed under the AFL-2.0 license and uses three dependencies licensed under
             the AFL-2.1, CPL-1.0, and AFL-3.0 licenses. Using the <a href="https://spdx.org/licenses/">SPDX License List</a>,
@@ -59,7 +58,7 @@
             </tr>
         </table>
 
-        <p>After %product% analyzes your project, such information is available in a
+        <p>After %product% analyzes your project, such information is available in the
             <a anchor="license-audit-verifying-data">report</a>.</p>
 
     </chapter>
@@ -94,7 +93,6 @@
             </code>
         </chapter>
 
-        <!-- I need to test it once more before submitting -->
         <chapter title="Allow or prohibit dependency licenses" id="license-allow-prohibit-licenses">
             <p>You can override the <a href="https://spdx.org/licenses/">license matrix</a> and specify the list of
                 dependency licenses that are allowed or prohibited for the specific project license.</p>
@@ -118,8 +116,6 @@
 
 
         </chapter>
-
-        <!-- This still requires some explanations -->
 
         <chapter title="Override a dependency license" id="license-audit-override-license">
             <p>You can override a dependency license identifier. This can be useful when a dependency is dual-licensed
@@ -154,7 +150,6 @@
                   - key: "Apache-2.0"
                 url: "https://github.com/SchemaStore/schemastore/blob/master/LICENSE"
             </code>
-            <!-- I need to explain what is what in this snippet. Need to ask Viktor about it -->
         </chapter>
 
     </chapter>
