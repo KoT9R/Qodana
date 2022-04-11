@@ -4,13 +4,13 @@
 <topic xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/stardust/topic.v2.xsd"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        title="Plugins"
-       id="extending-qodana-plugins.xml">
+       id="extending-qodana-plugins">
 
     <var name="inspection-url" value="plugins.jetbrains.com/docs/intellij/code-inspections-and-intentions.html#inspections"/>
+    <var name="conf-dir" value="www.jetbrains.com/help/idea/directories-used-by-the-ide-to-store-settings-caches-plugins-and-logs.html#config-directory"/>
 
-    <p>You can extend %product% inspection functionality using either
-        <a anchor="extending-qodana-marketplace-plugins">plugins from JetBrains Marketplace</a> or use
-        <a anchor="extending-qodana-developing-plugins">custom-developed</a> plugins.</p>
+    <p>You can extend %product% inspection functionality using either plugins from JetBrains Marketplace or develop
+        <a anchor="extending-qodana-developing-plugins">your own</a> plugins.</p>
 
     <chapter id="extending-qodana-marketplace-plugins" title="Plugins from JetBrains Marketplace">
 
@@ -19,26 +19,24 @@
 
         <p>This section explains how to inspect PHP code using the
             <a href="https://plugins.jetbrains.com/plugin/7622-php-inspections-ea-extended-">Php Inspections (EA Extended)</a>
-            plugin with the <a href="qodana-php.md"/> linter. All actions taken in the IDE are explained for PhpStorm.
+            plugin combined with the <a href="qodana-php.md"/> linter. All actions taken in the IDE are explained for PhpStorm.
             You can reproduce these steps for any plugin from JetBrains Marketplace you would like to extend %product% with.</p>
 
-        <procedure>
+        <procedure id="extending-qodana-using-plugins">
             <step>Install the plugin and enable it as explained on the
-                <a href="https://www.jetbrains.com/help/phpstorm/managing-plugins.html">Install plugins</a> section of the
+                <a href="https://www.jetbrains.com/help/phpstorm/managing-plugins.html">Install plugins</a> page of the
                 PhpStorm documentation portal. </step>
             <step>Configure the Php Inspections (EA Extended) plugin inspections. For more details, see the
                 <a href="https://www.jetbrains.com/help/phpstorm/inspections-settings.html">Inspections</a> page.</step>
-            <step>Export the profile containing the enabled plugin inspections as described in the
-                <a href="https://www.jetbrains.com/help/phpstorm/customizing-profiles.html">Configure profiles</a> section.
+            <step>Export the profile containing the enabled plugin inspections as described on the
+                <a href="https://www.jetbrains.com/help/phpstorm/customizing-profiles.html">Configure profiles</a> page.
             </step>
             <step>
                 <menupath>(Optional)</menupath> You may need additional plugin configuration options that are usually
                 configured in the <menupath>Settings</menupath> window of your IDE. In case of the
                 <a href="https://plugins.jetbrains.com/plugin/7622-php-inspections-ea-extended-">Php Inspections (EA Extended)</a>
                 plugin, this may be required for specifying Yoda style rules and are contained in the <code>options</code>
-                subdirectory of the
-                <a href="https://www.jetbrains.com/help/idea/directories-used-by-the-ide-to-store-settings-caches-plugins-and-logs.html#config-directory">configuration directory</a>
-                of your IDE.
+                subdirectory of the <a href="https://%conf-dir%">configuration directory</a> of your IDE.
             </step>
             <step>
                 <p>In the project root directory, create the <code>qodana.yaml</code> file and specify the path to the
