@@ -4,7 +4,7 @@
 <topic xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/stardust/topic.v2.xsd"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        title="Extending Qodana"
-       id="extending-qodana.xml">
+       id="extending-qodana">
 
     <p>Basically, %product% provides several <a href="linters.md">linters</a> supporting a variety of
         technologies, and <a href="qodana-yaml.md">inspection profiles</a> let you additionally customize each linter to

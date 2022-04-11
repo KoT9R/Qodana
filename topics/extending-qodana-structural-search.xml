@@ -10,16 +10,17 @@
     <var name="struct-search-replace" value="www.jetbrains.com/help/idea/structural-search-and-replace.html#to_search_structurally"/>
 
     <p><a href="https://www.jetbrains.com/help/idea/structural-search-and-replace.html">Structural search</a> is a
-        powerful and flexible mechanism built into JetBrains IDEs. It employs search templates to let you inspect the
+        powerful and flexible mechanism built into JetBrains IDEs. It employs
+        <a href="https://www.jetbrains.com/help/idea/search-templates.html">search templates</a> to let you inspect the
         codebase taking into account its semantics. You can create your own search templates and use them as
         %product% inspections.</p>
 
     <chapter title="How it works" id="extending-qodana-structural-search-example">
 
-        <p>As an example, consider this <a href="https://www.jetbrains.com/help/idea/search-templates.html">search template</a>:</p>
+        <p>As an example, consider this search template:</p>
         <code style="block">$Instance$.$MethodCall$($Parameter$)</code>
 
-        <p>This template lets you detect the <code lang="java">System.out.println()</code> Java statement with hardcoded
+        <p>It lets you detect the <code lang="java">System.out.println()</code> Java statement with hardcoded
             text like <code lang="java">System.out.println("Hardcoded text!")</code>. This table describes the values of
             each variable that the search template can accept:</p>
         <table>
@@ -39,8 +40,8 @@
                 <img src="extending-qodana-1.png" dark-src="extending-qodana-1_dark.png" alt="Search template" width="706" border-effect="line"/>
             </step>
             <step>
-                <p>Convert the template to inspection as described in the
-                    <a href="https://%struct-search%">Work with structural search and replace</a> section of the
+                <p>Convert the template to inspection as described on the
+                    <a href="https://%struct-search%">Work with structural search and replace</a> page of the
                     IntelliJ IDEA documentation portal. For example, it can be saved as
                     <code style="inline">Hardcoded-print</code>.</p>
             </step>
@@ -48,13 +49,12 @@
                 <p>In the <menupath>Settings</menupath> dialog, enable the inspection in the
                     <menupath>Structural search</menupath> group of inspections. For more details, see
                     the <a href="https://www.jetbrains.com/help/idea/customizing-profiles.html">Configure profiles</a>
-                    section.</p>
+                    page.</p>
                 <img src="extending-qodana-enabling-inspection.png" dark-src="extending-qodana-enabling-inspection_dark.png" alt="Enabling inspection" width="706" border-effect="line"/>
             </step>
             <step>
                 <p>In the <menupath>Inspections</menupath> section of the <menupath>Settings</menupath> dialog, export the
-                    updated profile as described in the
-                    <a href="https://www.jetbrains.com/help/idea/customizing-profiles.html">Configure profiles</a> section.</p>
+                    updated profile.</p>
             </step>
             <step>
                 <p>In the project root directory, create the <code>qodana.yaml</code> file and specify the path to the
