@@ -20,9 +20,9 @@
         <p>As an example, consider this search template:</p>
         <code style="block">$Instance$.$MethodCall$($Parameter$)</code>
 
-        <p>It lets you detect the <code lang="java">System.out.println()</code> Java statement with hardcoded
-            text like <code lang="java">System.out.println("Hardcoded text!")</code>. This table describes the values of
-            each variable that the search template can accept:</p>
+        <p>It lets you detect the <code lang="java">System.out.println()</code> Java statement. To make it detect the
+            statements with hardcoded text like <code lang="java">System.out.println("Hardcoded text!")</code>, the
+            template should take the modifiers described below:</p>
         <table>
             <tr><td>Variable</td><td>Value</td><td>Explanation</td></tr>
             <tr><td>$Instance$</td><td>[0,1]</td><td>Accepts zero or one value.</td></tr>
@@ -30,7 +30,7 @@
             <tr><td>$Parameter$</td><td>text=^\".*\"$</td><td>Any text enclosed in quote characters.</td></tr>
         </table>
 
-        <p>This procedure explains how use this search template for inspecting your codebase using %product%.</p>
+        <p>This procedure explains how to use this search template for inspecting your codebase using %product%.</p>
 
         <procedure id="extending-qodana-structural-search-example-procedure">
             <step>
@@ -46,7 +46,7 @@
                     <code style="inline">Hardcoded-print</code>.</p>
             </step>
             <step>
-                <p>In the <menupath>Settings</menupath> dialog, enable the inspection in the
+                <p>Use <menupath>Settings | Editor | Inspections</menupath> to enable the inspection in the
                     <menupath>Structural search</menupath> group of inspections. For more details, see
                     the <a href="https://www.jetbrains.com/help/idea/customizing-profiles.html">Configure profiles</a>
                     page.</p>
