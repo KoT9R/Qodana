@@ -6,12 +6,7 @@
        title="License audit"
        id="license-audit">
 
-    <var name="feature" value="License Audit"/>
-
-    <!-- I need to explain how the linter works and searches for text licenses, including unreadable files. I need to ask Viktor about it -->
-    <!-- All terminology needs to be reviewed at the final stage -->
-    <!-- Do I understand correctly that information about dependencies is read from dependency configuration files. Need to ask Viktor about it -->
-    <!-- Overriding a dependency license and creating custom dependencies still require some explanations. Need to ask Viktor about it -->
+    <var name="feature" value="License audit"/>
 
     <p>If a project is licensed under a specific license and employs a bunch of dependencies being licensed under
         separate licenses. Manual verification of compatibility between the project license and all dependency licenses
@@ -19,16 +14,16 @@
         legal consequences. </p>
 
     <p> To automate the process of license verification and avoid mistakes connected with manual verification, you can
-        use the %feature% feature that implements the <a href="https://spdx.org/licenses/">SPDX License List</a> for
-        exploring license compatibility. This feature is included in all existing %product%
+        use the %feature% feature. This is included in all existing %product%
         <a href="linters.md">linters</a>, and you can use it for exploring the JPS, Maven, Gradle, npm, yarn and
-        composer projects.</p>
+        composer projects. Information about project dependencies is obtained from the IntelliJ IDEA project model and
+        package manager configuration files.</p>
 
     <chapter title="How it works" id="license-audit-how-it-works">
 
-        <p>For example, a project is licensed under the AFL-2.0 license and uses three dependencies licensed under
-            the AFL-2.1, CPL-1.0, and AFL-3.0 licenses. Using the <a href="https://spdx.org/licenses/">SPDX License List</a>,
-            this table explains which dependency licenses are compatible with the project license.</p>
+        <p>For example, a project is licensed under the Apache-2.0 license and uses three dependencies licensed under
+            the MIT, GPL-2.0-only, and Apache-2.0 licenses. This table explains which dependency licenses are compatible
+            with the project license.</p>
 
         <table>
             <tr>
@@ -38,22 +33,22 @@
             </tr>
             <tr>
                 <td>Project software</td>
-                <td>AFL-2.0</td>
+                <td>Apache-2.0</td>
                 <td>&mdash;</td>
             </tr>
             <tr>
                 <td>Dependency A</td>
-                <td>AFL-2.1</td>
+                <td>MIT</td>
                 <td>Yes</td>
             </tr>
             <tr>
                 <td>Dependency B</td>
-                <td>CPL-1.0</td>
+                <td>GPL-2.0-only</td>
                 <td>No</td>
             </tr>
             <tr>
                 <td>Dependency C</td>
-                <td>AFL-3.0</td>
+                <td>Apache-2.0</td>
                 <td>Yes</td>
             </tr>
         </table>
@@ -94,7 +89,7 @@
         </chapter>
 
         <chapter title="Allow or prohibit dependency licenses" id="license-allow-prohibit-licenses">
-            <p>You can override the <a href="https://spdx.org/licenses/">license matrix</a> and specify the list of
+            <p>You can override the license matrix and specify the list of
                 dependency licenses that are allowed or prohibited for the specific project license.</p>
             <p>In this snippet, the <code>keys</code> key accepts application licenses, and the <code>allowed</code> and
                 <code>prohibited</code> keys accept the lists of allowed and prohibited dependency licenses respectively.
@@ -144,11 +139,11 @@
 
             <code style="block" lang="yaml">
                 customDependencies:
-                  - name: ".babelrc JSON Schema (.babelrc-schema.json)"
-                version: "JSON schema for Babel 6+ configuration files"
-                licenses:
-                  - key: "Apache-2.0"
-                url: "https://github.com/SchemaStore/schemastore/blob/master/LICENSE"
+                    - name: ".babelrc JSON Schema (.babelrc-schema.json)"
+                      version: "JSON schema for Babel 6+ configuration files"
+                      licenses:
+                          - key: "Apache-2.0"
+                            url: "https://github.com/SchemaStore/schemastore/blob/master/LICENSE"
             </code>
         </chapter>
 

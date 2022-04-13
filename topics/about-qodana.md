@@ -25,6 +25,7 @@ Every linter provides two types of output:
 
 Qodana linters are supplied in the following distribution formats and web services:
 - [Docker images](docker-images.md)
+- [Qodana Scan GitHub action](qodana-github-action.md) and [Qodana Linters GitHub App](qodana-github-application.md)
 - [Cloud service](service.md)
 - [Plugins](qodana_plugins.md)
 

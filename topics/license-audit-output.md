@@ -1,4 +1,4 @@
-[//]: # (title: License Audit output formats)
+[//]: # (title: License audit output formats)
 [//]: # (auxiliary-id: LA-Output)
 
 [![official project](https://jb.gg/badges/official-flat-square.svg)](https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub)
