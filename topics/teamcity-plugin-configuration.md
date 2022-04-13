@@ -8,50 +8,6 @@ The main Qodana functionality comes from the 'engine' shaped into the Docker ima
 
 - You use TeamCity as a build server for your project. If not, learn how to do it in [TeamCity documentation](https://www.jetbrains.com/help/teamcity/teamcity-documentation.html).
 - Your project language is included in the list of fully [supported technologies](https://www.jetbrains.com/help/qodana/supported-technologies.html).
-- The [Qodana plugin](https://plugins.jetbrains.com/plugin/15498-qodana) is installed on your TeamCity server (you can do it yourself or contact the server's administrator to do this).
-
-
-### (Optional) Add a configuration script
-{id="add-script"}
-
-Custom profile configuration for Qodana linters is stored in `qodana.yaml`. When using a CI system, you need to put this file to the working directory manually. Alternatively, you can write a script that will do it for you.
-
-1. Navigate to your build configuration.
-   <img src="teamcity-plugin-1.png" alt="Navigating to the build configuration" width="706" border-effect="line"/>
-
-2. On the build configuration page, select **Build Steps** from the **Edit configuration** list.
-   <img src="teamcity-plugin-2.png" alt="Navigating to the step configuration" width="706" border-effect="line"/>
-
-3. On the **Build steps** page, click the **Add build step** button.
-   <img src="teamcity-plugin-3.png" alt="Creating a new build step" width="706" border-effect="line"/>
-
-4. From the **Runner type** list, select **Command Line**. On the **New Build Step** page, you can configure the 
-   `Command Line` runner using the basic options. Otherwise, click **Show advanced options** to expand the list of configuration options.
-   <img src="teamcity-plugin-5.png" alt="Expanding all configuration options of the Command Line runner" width="706" border-effect="line"/>
-
-5. Fill in the fields using the [Command Line](https://www.jetbrains.com/help/teamcity/command-line.html#General+Settings) 
-   runner description from the TeamCity documentation portal. 
-
-   In the **Custom script** editor, paste a script that adds a custom `qodana.yaml` to the working directory. In the 
-   example below, the script appends the following inspection exclusions to the configuration file:
-
-   ```shell
-   #!/bin/sh
-   
-   FILE="./qodana.yaml"
-   
-   /bin/cat <<EOM >$FILE
-   exclude:
-   - name: Annotator
-   - name: AnotherInspectionId
-     paths:
-       - relative/path
-       - another/relative/path
-   - name: CloneFinder
-   - name: ProhibitedDependencyLicense
-  
-   EOM  
-   ```
 
 ### Add a Qodana runner 
 
@@ -103,33 +59,55 @@ using the basic options. Otherwise, click **Show advanced options** to expand th
 
 7. Click **Save**. Now you can run Qodana in the build.
 
-
-## Add more runners to your build
-You can add inspections by [Clone Finder](https://www.jetbrains.com/help/qodana/about-clone-finder.html) or [License Audit](https://www.jetbrains.com/help/qodana/about-license-audit.html) to your build steps.
-
-When viewing analysis results for a specific build later, you can disable certain runners and inspections via [`qodana.yaml`](https://www.jetbrains.com/help/qodana/qodana-yaml.html) and update the [configuration script](#add-script).
-
 ### Prerequisites for adding more runners
 
 - The Qodana plugin for teamCity is installed.
 - The Clone Finder or License Audit plugins for teamCity are installed as necessary.
 
-## Advanced configuration
-
-[//]: # "delete? supplement? ...todo: Failure Conditions based on Qodana metrics"
-
-Advanced configuration lets you report all found problems via the standard TeamCity tests mechanism. It means
-you can assign investigations, mute, see history, and do everything else you can do with regular tests in TeamCity. Qodana reports tests in four different ways:
-
-- per problem
-- per inspection type
-- per inspection type/per module (if this information is available)
-- per inspection type/per file
-
 ## Logs
 
 On TeamCity, open your project build page and go to the **Build Log** tab. Here you can find a standard shell output where errors are highlighted in yellow.
 
-For more details, go to the **Artifacts** tab, where more detailed logs for TeamCity and Qodana are provided.
+For more information about TeamCity logs, see [TeamCity documentation](https://www.jetbrains.com/help/teamcity/teamcity-documentation.html).
 
-For more about TeamCity logs, see [TeamCity documentation](https://www.jetbrains.com/help/teamcity/teamcity-documentation.html).
+### (Optional) Add a configuration script
+{id="add-script"}
+
+Custom profile configuration for Qodana linters is stored in `qodana.yaml`. When using a CI system, you need to put this file to the working directory manually. Alternatively, you can write a script that will do it for you.
+
+1. Navigate to your build configuration.
+   <img src="teamcity-plugin-1.png" alt="Navigating to the build configuration" width="706" border-effect="line"/>
+
+2. On the build configuration page, select **Build Steps** from the **Edit configuration** list.
+   <img src="teamcity-plugin-2.png" alt="Navigating to the step configuration" width="706" border-effect="line"/>
+
+3. On the **Build steps** page, click the **Add build step** button.
+   <img src="teamcity-plugin-3.png" alt="Creating a new build step" width="706" border-effect="line"/>
+
+4. From the **Runner type** list, select **Command Line**. On the **New Build Step** page, you can configure the
+   `Command Line` runner using the basic options. Otherwise, click **Show advanced options** to expand the list of configuration options.
+   <img src="teamcity-plugin-5.png" alt="Expanding all configuration options of the Command Line runner" width="706" border-effect="line"/>
+
+5. Fill in the fields using the [Command Line](https://www.jetbrains.com/help/teamcity/command-line.html#General+Settings)
+   runner description from the TeamCity documentation portal.
+
+   In the **Custom script** editor, paste a script that adds a custom `qodana.yaml` to the working directory. In the
+   example below, the script appends the following inspection exclusions to the configuration file:
+
+   ```shell
+   #!/bin/sh
+   
+   FILE="./qodana.yaml"
+   
+   /bin/cat <<EOM >$FILE
+   exclude:
+   - name: Annotator
+   - name: AnotherInspectionId
+     paths:
+       - relative/path
+       - another/relative/path
+   - name: CloneFinder
+   - name: ProhibitedDependencyLicense
+  
+   EOM  
+   ```
