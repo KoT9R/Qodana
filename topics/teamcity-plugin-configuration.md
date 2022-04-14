@@ -1,10 +1,6 @@
-[//]: # (title: TeamCity plugin configuration)
+[//]: # (title: TeamCity configuration)
 
-The main Qodana functionality comes from the 'engine' shaped into the Docker image. If you want to go beyond the boundaries of the default settings, refer to the [Docker image guide](https://www.jetbrains.com/help/qodana/?qodana-jvm-docker-readme). Note that you don't need to write `docker run` on your own: the plugin will do it for you. You can just use all other options and provide them via the dedicated UI or DSL properties.
-
-## Add Qodana analysis to your project builds on TeamCity
-
-### Prerequisites
+The Qodana functionality is available in TeamCity out of box. To start using it, you need to meet these prerequisites:
 
 - You use TeamCity as a build server for your project. If not, learn how to do it in [TeamCity documentation](https://www.jetbrains.com/help/teamcity/teamcity-documentation.html).
 - Your project language is included in the list of fully [supported technologies](https://www.jetbrains.com/help/qodana/supported-technologies.html).
@@ -59,21 +55,16 @@ using the basic options. Otherwise, click **Show advanced options** to expand th
 
 7. Click **Save**. Now you can run Qodana in the build.
 
-### Prerequisites for adding more runners
-
-- The Qodana plugin for teamCity is installed.
-- The Clone Finder or License Audit plugins for teamCity are installed as necessary.
-
 ## Logs
 
-On TeamCity, open your project build page and go to the **Build Log** tab. Here you can find a standard shell output where errors are highlighted in yellow.
-
-For more information about TeamCity logs, see [TeamCity documentation](https://www.jetbrains.com/help/teamcity/teamcity-documentation.html).
+To study TeamCity log entries, open your project build page and go to the **Build Log** tab. Here you can find a 
+standard shell output where errors are highlighted in yellow.
 
 ### (Optional) Add a configuration script
 {id="add-script"}
 
-Custom profile configuration for Qodana linters is stored in `qodana.yaml`. When using a CI system, you need to put this file to the working directory manually. Alternatively, you can write a script that will do it for you.
+Custom profile configuration for Qodana linters is stored in `qodana.yaml`. When using a CI system, you need to put 
+this file to the working directory manually. Alternatively, you can write a script that will do it for you.
 
 1. Navigate to your build configuration.
    <img src="teamcity-plugin-1.png" alt="Navigating to the build configuration" width="706" border-effect="line"/>
