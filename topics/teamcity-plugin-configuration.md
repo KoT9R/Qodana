@@ -1,6 +1,6 @@
 [//]: # (title: TeamCity configuration)
 
-The Qodana functionality is available in TeamCity out of box. To start using it, you need to meet these prerequisites:
+Qodana functionality is available in TeamCity by default. To start using it, you need to meet these prerequisites:
 
 - You use TeamCity as a build server for your project. If not, learn how to do it in [TeamCity documentation](https://www.jetbrains.com/help/teamcity/teamcity-documentation.html).
 - Your project language is included in the list of fully [supported technologies](https://www.jetbrains.com/help/qodana/supported-technologies.html).
@@ -54,11 +54,6 @@ using the basic options. Otherwise, click **Show advanced options** to expand th
    **Additional Qodana arguments** lets you extend the default Qodana functionality, see the [Configuration options](qodana-jvm-docker-techs.xml#Configuration+options) for details.
 
 7. Click **Save**. Now you can run Qodana in the build.
-
-## Logs
-
-To study TeamCity log entries, open your project build page and go to the **Build Log** tab. Here you can find a 
-standard shell output where errors are highlighted in yellow.
 
 ### (Optional) Add a configuration script
 {id="add-script"}
