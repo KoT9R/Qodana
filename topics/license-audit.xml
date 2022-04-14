@@ -8,16 +8,11 @@
 
     <var name="feature" value="License audit"/>
 
-    <p>If a project is licensed under a specific license and employs a bunch of dependencies being licensed under
-        separate licenses. Manual verification of compatibility between the project license and all dependency licenses
-        can become a tedious task. Besides that, running dependencies unsuitable for a specific project license can have
-        legal consequences. </p>
-
-    <p> To automate the process of license verification and avoid mistakes connected with manual verification, you can
-        use the %feature% feature. This is included in all existing %product%
-        <a href="linters.md">linters</a>, and you can use it for exploring the JPS, Maven, Gradle, npm, yarn and
-        composer projects. Information about project dependencies is obtained from the IntelliJ IDEA project model and
-        package manager configuration files.</p>
+    <p>Verification of compatibility between project and dependency licenses can become a tedious task, but this is
+        required for legal purposes. To automate this process and avoid mistakes, you can use the %feature% feature
+        supported by all %product% <a href="linters.md">linters</a>. Using this feature, you can explore the JPS, Maven,
+        Gradle, npm, yarn and composer projects. %feature% reads information about project dependencies from the
+        IntelliJ IDEA project model and package manager configuration files.</p>
 
     <chapter title="How it works" id="license-audit-how-it-works">
 
