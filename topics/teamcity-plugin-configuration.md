@@ -1,6 +1,7 @@
 [//]: # (title: TeamCity configuration)
 
-Qodana functionality is available in TeamCity by default. To start using it, you need to meet these prerequisites:
+Starting from `2022.04`, Qodana functionality is available in TeamCity by default. To start using it, these prerequisites
+should be met:
 
 - You use TeamCity as a build server for your project. If not, learn how to do it in [TeamCity documentation](https://www.jetbrains.com/help/teamcity/teamcity-documentation.html).
 - Your project language is included in the list of fully [supported technologies](https://www.jetbrains.com/help/qodana/supported-technologies.html).
@@ -97,3 +98,4 @@ this file to the working directory manually. Alternatively, you can write a scri
   
    EOM  
    ```
+Now that you have configured and run the build, you can observe inspection results on the build page.   
