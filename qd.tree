@@ -90,7 +90,7 @@
         </toc-element>
         <toc-element id="qodana-github-application.md" accepts-web-file-names="qodana-intellij-github-application.html"/>
         <toc-element id="gitlab.md"/>
-        <toc-element id="teamcity-configuration.md"/>
+        <toc-element id="teamcity.md"/>
         <toc-element id="jenkins.md"/>
     </toc-element>
 
