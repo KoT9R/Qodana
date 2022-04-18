@@ -1,4 +1,4 @@
-[//]: # (title: TeamCity configuration)
+[//]: # (title: TeamCity)
 
 Starting from `2022.04`, Qodana functionality is available in TeamCity by default. To start using it, these prerequisites
 should be met:
