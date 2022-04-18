@@ -98,4 +98,4 @@ this file to the working directory manually. Alternatively, you can write a scri
   
    EOM  
    ```
-Now that you have configured and run the build, you can observe inspection results on the build page.   
+Now that you have configured and run the build, you can observe [inspection results](ui-overview.md).   
