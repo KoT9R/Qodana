@@ -1,7 +1,7 @@
 [//]: # (title: TeamCity)
 
 Starting from `2022.04`, Qodana functionality is available in TeamCity by default. To start using it, these prerequisites
-should be met:
+need to be met:
 
 - You use TeamCity as a build server for your project. If not, learn how to do it in [TeamCity documentation](https://www.jetbrains.com/help/teamcity/teamcity-documentation.html).
 - Your project language is included in the list of fully [supported technologies](https://www.jetbrains.com/help/qodana/supported-technologies.html).
@@ -98,4 +98,15 @@ this file to the working directory manually. Alternatively, you can write a scri
   
    EOM  
    ```
-Now that you have configured and run the build, you can observe [inspection results](ui-overview.md).   
+
+### Verify inspection results
+
+Now that you have configured and run the build, you can observe inspection results in the TeamCity UI.  
+
+1. Navigate to the project build page. In the **Overview** tab, click the build entry.
+   <img src="teamcity-plugin-verification-1.png" alt="Navigating to the build entry" width="706" border-effect="line"/>
+
+2. On the build page, navigate to the **Qodana** tab to find the inspection report. 
+   <img src="teamcity-plugin-verification-2.png" alt="Navigating to the Qodana tab" width="706" border-effect="line"/>
+
+
