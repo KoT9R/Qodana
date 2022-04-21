@@ -30,20 +30,13 @@
             <step>Export the profile containing the enabled plugin inspections as described on the
                 <a href="https://www.jetbrains.com/help/phpstorm/customizing-profiles.html#5066b0b3">Configure profiles</a> page.
             </step>
-            <step>
-                <menupath>(Optional)</menupath> You may need additional plugin configuration options that are usually
-                configured in the <menupath>Settings</menupath> dialog of your IDE. In case of the
-                <menupath>Php Inspections (EA Extended)</menupath> plugin, such options may be required for specifying Yoda style rules
-                contained in the <code>options</code> subdirectory of the
-                <a href="https://%conf-dir%">configuration directory</a> of your IDE.
-            </step>
         </procedure>
 
         <p>In the project root directory, create the <code>qodana.yaml</code> file and specify the path to the
             <a href="qodana-yaml.md" anchor="Set+up+a+profile+by+the+path">profile</a> location in it:</p>
         <code style="block" lang="yaml">
             profile:
-            path: path/to/the/profile/file
+                path: path/to/the/profile/file
         </code>
 
         <p>This is the snippet for running %product% locally using the plugin:</p>
