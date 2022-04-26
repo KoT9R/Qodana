@@ -2,12 +2,7 @@
 
 [![official project](https://jb.gg/badges/official-flat-square.svg)](https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub)
 
-<var name="linter" value="Qodana License audit"/>
-
-<warning>
-The %linter% linter is deprecated. Use <a href="linters.md">technology-specific Qodana linters</a> for inspecting 
-compatibility of dependency licenses.
-</warning>
+<include src="lib_qd.xml" include-id="license-audit-deprecation-note"/>
 
 <note>
 

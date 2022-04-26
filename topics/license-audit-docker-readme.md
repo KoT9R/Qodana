@@ -1,11 +1,7 @@
 [//]: # (title: License audit Docker image)
 ![official JetBrains project](https://jb.gg/badges/official-flat-square.svg) ![Docker Stars](https://img.shields.io/docker/stars/jetbrains/qodana-license-audit.svg) ![Docker Pulls](https://img.shields.io/docker/pulls/jetbrains/qodana-license-audit.svg)
 
-><include src="lib_qd.xml" include-id="eap-warning"/>
-
-<var name="product" value="Qodana License audit"/>
-
-Supported tags:  [`2021.1-eap`](https://hub.docker.com/r/jetbrains/qodana-license-audit/tags?page=1&ordering=last_updated&name=2021.1-eap),  [`latest`](https://hub.docker.com/r/jetbrains/qodana-license-audit/tags?page=1&ordering=last_updated&name=latest) (points to `2021.1-eap`)
+<include src="lib_qd.xml" include-id="license-audit-deprecation-note"/>
 
 We provide a Docker image for the [License audit linter](about-license-audit.md) to support different usage scenarios:
 - Running the analysis on a regular basis as part of your continuous integration (*CI-based execution*).
