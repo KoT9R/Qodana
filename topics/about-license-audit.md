@@ -2,6 +2,8 @@
 
 [![official project](https://jb.gg/badges/official-flat-square.svg)](https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub)
 
+<var name="linter" value="Qodana License audit"/>
+
 <include src="lib_qd.xml" include-id="license-audit-deprecation-note"/>
 
 <note>
