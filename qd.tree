@@ -100,6 +100,6 @@
         <toc-element id="extending-qodana-structural-search.xml"/>
     </toc-element>
 
-    <toc-element id="troubleshooting.xml"/>
+    <toc-element id="qodana-troubleshooting.xml"/>
 
 </product-profile>
