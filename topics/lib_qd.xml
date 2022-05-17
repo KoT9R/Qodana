@@ -353,30 +353,61 @@
             <tr>
                 <td>Path</td>
                 <td>Description</td>
+                <td filter="troubleshooting-only">Comments</td>
             </tr>
             <tr>
                 <td>
                     <code>/data/project</code>
                 </td>
                 <td>Root directory of the project to be analyzed</td>
+                <td filter="troubleshooting-only"/>
             </tr>
             <tr>
                 <td>
                     <code>/data/results</code>
                 </td>
                 <td>Directory to store the analysis results, needs to be empty before running %linter%</td>
+                <td filter="troubleshooting-only"/>
             </tr>
             <tr>
                 <td>
                     <code>/opt/idea</code>
                 </td>
                 <td>%ide% distributive directory</td>
+                <td filter="troubleshooting-only"/>
             </tr>
             <tr>
                 <td>
                     <code>/root/.config/idea</code>
                 </td>
                 <td>%ide% configuration directory</td>
+                <td filter="troubleshooting-only"/>
+            </tr>
+            <tr filter="jvm-only">
+                <td>
+                    <code>/root/.m2</code> <!-- What is this folder for? -->
+                </td>
+                <td>
+                    could be added to this list, for JVM projects that use Maven, to avoid downloading dependencies again.
+                </td>
+                <td filter="troubleshooting-only">
+                    <p>For <a href="qodana-jvm.md">%product% for JVM</a>,
+                    <a href="qodana-jvm-community.md">%product% Community for JVM</a>, and
+                    <a href="qodana-jvm-android.md">%product% Community for Android</a> linters only.</p>
+                </td>
+            </tr>
+            <tr filter="jvm-only">
+                <td>
+                    <code>/root/.gradle</code>
+                </td>
+                <td>
+                    could be added to this list, for JVM projects that use Gradle, to avoid downloading dependencies again.
+                </td>
+                <td filter="troubleshooting-only">
+                    <p>For <a href="qodana-jvm.md">%product% for JVM</a>,
+                        <a href="qodana-jvm-community.md">%product% Community for JVM</a>, and
+                        <a href="qodana-jvm-android.md">%product% Community for Android</a> linters only.</p>
+                </td>
             </tr>
             <tr>
                 <td>
@@ -385,6 +416,7 @@
                 <td>Used if a profile was not previously configured either via the CLI or the <code>qodana.yaml</code>
                     file. See <a anchor="Order+of+resolving+a+profile">Order of resolving a profile</a>.
                 </td>
+                <td filter="troubleshooting-only"/>
             </tr>
         </table>
     </chunk>

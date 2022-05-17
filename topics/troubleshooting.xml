@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic SYSTEM "https://resources.jetbrains.com/stardust/html-entities.dtd">
+
+<topic xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/stardust/topic.v2.xsd"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       title="Troubleshooting"
+       id="troubleshooting" auxiliary-id="troubleshooting.xml">
+
+    <p>This section contains information that can help you troubleshoot common problems.</p>
+
+    <chapter id="troubleshooting-mounted-directories" title="List of directories mounted to a Docker container">
+        <p>This table lists all directories mounted to %product% Docker containers.</p>
+        <include src="lib_qd.xml" include-id="docker-config-image-paths" use-filter="empty,jvm-only,troubleshooting-only"/>
+    </chapter>
+
+    <chapter id="troubleshooting-qodana-log-files" title="List of files for investigating Qodana behavior">
+        <p>You have several options for examining %product% behavior using the <code>/data/result</code> directory:</p>
+        <list>
+            <li>The <code>/data/result/projectStructure/Modules.json</code> file lists all modules detected by %product%.
+                It should be identical to the list that you expect to see while opening the project in IDEA. If it is not
+                the case, check <code>pom.xml</code> for Maven or the <code>build.gradle</code> file for Gradle configurations.</li>
+            <!-- This needs to be reviewed once more -->
+            <li>In the <code>/data/result/</code> directory, each inspection that detected a possible problem creates
+                its own file named <code>ID.json</code>, where <code>ID</code> is the inspection name that can be used in
+                <code>qodana.yaml</code> for including or excluding inspections. You can find the complete list of
+                inspection IDs in the <code>/data/result/.descriptions.json</code> file using the
+                <code>/groups/*/inspections/*/shortName</code> pattern.</li>
+            <li>In <code>/data/results/log/idea.log</code>, you can investigate suspicious warnings.</li>
+        </list>
+
+
+    </chapter>
+
+</topic>

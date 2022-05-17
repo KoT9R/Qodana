@@ -14,7 +14,7 @@
 
     <chapter id="Docker+image+paths" title="Docker image paths">
 
-        <include src="lib_qd.xml" include-id="docker-config-image-paths"/>
+        <include src="lib_qd.xml" include-id="docker-config-image-paths" use-filter="jvm-only,empty"/>
 
     </chapter>
 
