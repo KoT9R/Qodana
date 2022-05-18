@@ -14,7 +14,7 @@
     </chapter>
 
     <chapter id="troubleshooting-qodana-log-files" title="List of files for investigating Qodana behavior">
-        <p>You have several options for examining %product% behavior using the <code>/data/result</code> directory:</p>
+        <p>There are several options to examine %product% behavior using the <code>/data/result</code> directory:</p>
         <list>
             <li>The <code>/data/result/projectStructure/Modules.json</code> file lists all modules detected by %product%.
                 It should be identical to the list that you expect to see while opening the project in IDEA. If it is not
