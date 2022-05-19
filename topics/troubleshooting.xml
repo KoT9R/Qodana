@@ -4,7 +4,7 @@
 <topic xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/stardust/topic.v2.xsd"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        title="Troubleshooting"
-       id="qodana-troubleshooting" auxiliary-id="qodana-troubleshooting.xml">
+       id="troubleshooting">
 
     <p>This section contains information that can help you troubleshoot common problems.</p>
 
