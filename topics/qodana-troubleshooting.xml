@@ -14,16 +14,16 @@
     </chapter>
 
     <chapter id="troubleshooting-qodana-log-files" title="List of files for investigating Qodana behavior">
-        <p>There are several options to examine %product% behavior using the <code>/data/result</code> directory:</p>
+        <p>There are several options for examining %product% behavior using the <code>/data/results</code> directory:</p>
         <list>
-            <li>The <code>/data/result/projectStructure/Modules.json</code> file lists all modules detected by %product%.
+            <li>The <code>/data/results/projectStructure/Modules.json</code> file lists all modules detected by %product%.
                 It should be identical to the list that you expect to see while opening the project in IDEA. If it is not
                 the case, check <code>pom.xml</code> for Maven or the <code>build.gradle</code> file for Gradle configurations.</li>
-            <!-- This needs to be reviewed once more -->
-            <li>In the <code>/data/result/</code> directory, each inspection that detected a possible problem creates
+
+            <li>In the <code>/data/results/</code> directory, each inspection that detected a possible problem creates
                 its own file named <code>ID.json</code>, where <code>ID</code> is the inspection name that can be used in
                 <code>qodana.yaml</code> for including or excluding inspections. You can find the complete list of
-                inspection IDs in the <code>/data/result/.descriptions.json</code> file using the
+                inspection IDs in the <code>/data/results/.descriptions.json</code> file using the
                 <code>/groups/*/inspections/*/shortName</code> pattern.</li>
             <li>In <code>/data/results/log/idea.log</code>, you can investigate suspicious warnings.</li>
         </list>
