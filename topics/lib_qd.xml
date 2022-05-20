@@ -395,7 +395,7 @@
                     again. This will save time and resources.
                 </td>
                 <td filter="troubleshooting-only">
-                    <p>Only for Maven projects. Applicable only for <a href="qodana-jvm.md">%product% for JVM</a>,
+                    <p>Applicable only for <a href="qodana-jvm.md">%product% for JVM</a>,
                     <a href="qodana-jvm-community.md">%product% Community for JVM</a>, and
                     <a href="qodana-jvm-android.md">%product% Community for Android</a> linters.</p>
                 </td>
@@ -409,7 +409,7 @@
                     again. This will save time and resources.
                 </td>
                 <td filter="troubleshooting-only">
-                    <p>Only for Gradle projects. Applicable only for <a href="qodana-jvm.md">%product% for JVM</a>,
+                    <p>Applicable only for <a href="qodana-jvm.md">%product% for JVM</a>,
                         <a href="qodana-jvm-community.md">%product% Community for JVM</a>, and
                         <a href="qodana-jvm-android.md">%product% Community for Android</a> linters.</p>
                 </td>
