@@ -366,8 +366,7 @@
                 <td>
                     <code>/data/results</code>
                 </td>
-                <td filter="not-for-troubleshooting">Directory to store the analysis results, needs to be empty before running %linter%</td>
-                <td filter="troubleshooting-only">Directory to store the results of analysis.</td>
+                <td>Directory to store the analysis results, needs to be empty before running %product%</td>
                 <td filter="troubleshooting-only"/>
             </tr>
             <tr>
