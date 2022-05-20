@@ -8,8 +8,7 @@
 
     <p>This section contains information that can help you troubleshoot common problems.</p>
 
-    <chapter id="troubleshooting-mounted-directories" title="List of directories mounted to a Docker container">
-        <p>This table lists all directories mounted to %product% Docker containers.</p>
+    <chapter id="troubleshooting-mounted-directories" title="List of Docker image paths">
 
         <table>
             <tr>
@@ -26,19 +25,19 @@
                 <td>
                     <code>/data/results</code>
                 </td>
-                <td>Directory to store the analysis results, needs to be empty before running %product%</td>
+                <td>Directory to store the analysis results</td>
             </tr>
             <tr>
                 <td>
                     <code>/opt/idea</code>
                 </td>
-                <td>IDE distributive directory</td>
+                <td>Directory containing the IDE distribution</td>
             </tr>
             <tr>
                 <td>
                     <code>/root/.config/idea</code>
                 </td>
-                <td>IDE configuration directory</td>
+                <td>Directory where the IDE contains configuration</td>
             </tr>
             <tr>
                 <td>
@@ -50,8 +49,7 @@
             </tr>
         </table>
 
-        <p>For Maven and Gradle projects, %product% can use the dependencies that were already downloaded for project
-            purposes from these directories:</p>
+        <p>For Maven and Gradle projects, %product% uses the following directories to access third-party libraries:</p>
 
         <table>
             <tr>
@@ -66,11 +64,9 @@
                 <td><code>/root/.gradle</code></td>
                 <td>Gradle project dependencies</td>
             </tr>
-
-
         </table>
 
-        <p>This saves you from downloading all dependencies again while using these linters:</p>
+        <p>Mounting these directories saves %product% from downloading all dependencies again while using these linters:</p>
             <list>
                 <li><a href="qodana-jvm.md"/></li>
                 <li><a href="qodana-jvm-community.md"/></li>
