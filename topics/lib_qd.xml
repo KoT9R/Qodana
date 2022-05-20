@@ -353,75 +353,38 @@
             <tr>
                 <td>Path</td>
                 <td>Description</td>
-                <td filter="troubleshooting-only">Comments</td>
             </tr>
             <tr>
                 <td>
                     <code>/data/project</code>
                 </td>
                 <td>Root directory of the project to be analyzed</td>
-                <td filter="troubleshooting-only"/>
             </tr>
             <tr>
                 <td>
                     <code>/data/results</code>
                 </td>
-                <td>Directory to store the analysis results, needs to be empty before running %product%</td>
-                <td filter="troubleshooting-only"/>
+                <td>Directory to store the analysis results, needs to be empty before running %linter%</td>
             </tr>
             <tr>
                 <td>
                     <code>/opt/idea</code>
                 </td>
-                <td filter="not-for-troubleshooting">%ide% distributive directory</td>
-                <td filter="troubleshooting-only">IDE distributive directory</td>
-                <td filter="troubleshooting-only"/>
+                <td>%ide% distributive directory</td>
             </tr>
             <tr>
                 <td>
                     <code>/root/.config/idea</code>
                 </td>
-                <td filter="not-for-troubleshooting">%ide% configuration directory</td>
-                <td filter="troubleshooting-only">IDE configuration directory</td>
-                <td filter="troubleshooting-only"/>
-            </tr>
-            <tr filter="jvm-only">
-                <td>
-                    <code>/root/.m2/repository</code>
-                </td>
-                <td>
-                    For Maven projects, %product% can use dependencies from this directory instead of downloading them
-                    again. This will save time and resources.
-                </td>
-                <td filter="troubleshooting-only">
-                    <p>Applicable only for <a href="qodana-jvm.md">%product% for JVM</a>,
-                    <a href="qodana-jvm-community.md">%product% Community for JVM</a>, and
-                    <a href="qodana-jvm-android.md">%product% Community for Android</a> linters.</p>
-                </td>
-            </tr>
-            <tr filter="jvm-only">
-                <td>
-                    <code>/root/.gradle</code>
-                </td>
-                <td>
-                    For Gradle projects, %product% can use dependencies from this directory instead of downloading them
-                    again. This will save time and resources.
-                </td>
-                <td filter="troubleshooting-only">
-                    <p>Applicable only for <a href="qodana-jvm.md">%product% for JVM</a>,
-                        <a href="qodana-jvm-community.md">%product% Community for JVM</a>, and
-                        <a href="qodana-jvm-android.md">%product% Community for Android</a> linters.</p>
-                </td>
+                <td>%ide% configuration directory</td>
             </tr>
             <tr>
                 <td>
                     <code>/data/profile.xml</code>
                 </td>
-                <td><p>Used if a profile was not previously configured either via the CLI or the <code>qodana.yaml</code>
-                    file.</p>
-                    <p filter="not-for-troubleshooting">See <a anchor="Order+of+resolving+a+profile">Order of resolving a profile</a>.</p>
+                <td>Used if a profile was not previously configured either via the CLI or the <code>qodana.yaml</code>
+                    file. See <a anchor="Order+of+resolving+a+profile">Order of resolving a profile</a>.
                 </td>
-                <td filter="troubleshooting-only"/>
             </tr>
         </table>
     </chunk>
